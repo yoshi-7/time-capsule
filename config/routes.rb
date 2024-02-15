@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+
+  resources :capsules do
+    resources :messages, only: [:new, :create, :edit, :update]
+    resources :user_capsules, only: [:create]
+  end
+  resources :messages, only: [:destroy]
 end
