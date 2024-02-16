@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/dashboard', to: 'dashboard#show'
+
   devise_for :users
 
   devise_scope :user do
@@ -9,8 +11,6 @@ Rails.application.routes.draw do
     resources :messages, only: [:new, :create, :edit, :update]
     resources :user_capsules, only: [:create]
   end
-
-  get '/dashboard', to: 'dashboard#show'
 
   resources :messages, only: [:destroy]
 end
