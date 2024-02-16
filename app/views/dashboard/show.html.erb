@@ -1,2 +1,11 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+
+<div class="dashboard">
+  <h1>Dashboard#show</h1>
+  <p>Find me in app/views/dashboard/show.html.erb</p>
+
+  <h1>Your Capsules</h1>
+
+  <% @capsules.each do |capsule| %>
+    <p><%= capsule.name %></p> <!-- Assuming a Capsule has a name -->
+  <% end %>
+</div>
