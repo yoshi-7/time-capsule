@@ -9,4 +9,8 @@
       <%= render partial: "capsules/locked_capsule", locals: { capsule: capsule } %>
     <% end %>
   <% end %>
+
+  <div class="text-center mt-5">
+    <%= link_to "+ Create New Capsule", new_capsule_path, class: "btn btn-dark rounded-pill"%>
+  </div>
 </div>
