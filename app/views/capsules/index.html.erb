@@ -1,5 +1,4 @@
 <div class="container">
-  <%= render "shared/navbar" %>
   <% @capsules.each do |capsule| %>
     <% if capsule.status == "draft" %>
       <%= render partial: "capsules/draft_capsule", locals: { capsule: capsule } %>
