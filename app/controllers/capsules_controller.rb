@@ -13,6 +13,7 @@ class CapsulesController < ApplicationController
 
   def edit
     @capsule = Capsule.find(params[:id])
+    render _form_capsule
   end
 
   def update
@@ -27,7 +28,6 @@ class CapsulesController < ApplicationController
   private
 
   def capsule_params
-    params.require(:capsule).permit(:user_id)
+    params.require(:capsule).permit(:user)
   end
-
 end
