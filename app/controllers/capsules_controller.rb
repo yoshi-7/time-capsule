@@ -31,5 +31,4 @@ class CapsulesController < ApplicationController
   def capsule_params
     params.require(:capsule).permit(:user)
   end
-
 end
