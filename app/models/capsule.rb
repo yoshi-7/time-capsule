@@ -3,5 +3,5 @@ class Capsule < ApplicationRecord
   has_many :user_capsules
   has_many :messages
 
-  validates :user, :encapsulation_date, presence: true
+  validates :user, presence: true
 end
