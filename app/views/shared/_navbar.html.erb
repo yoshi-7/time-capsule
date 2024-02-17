@@ -1,0 +1,14 @@
+<div class="m-4 d-flex flex-column ml-8">
+  <div class="w-40">
+    <% if current_user.avatar.attached? %>
+      <%= image_tag(user.avatar, class: "rounded-circle") %>
+    <% else %>
+      <%= image_tag("avatar.svg", class: "rounded-circle") %>
+    <% end %>
+  </div>
+
+  <div class="my-4 w-30 p-0 gap-4 d-flex">
+    <p class="fw-bold">Upcoming</p>
+    <p class="text-secondary">Sent</p>
+  </div>
+</div>
