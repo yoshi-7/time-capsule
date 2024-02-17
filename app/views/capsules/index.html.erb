@@ -1,0 +1,12 @@
+<div class="container">
+  <%= render "shared/navbar" %>
+  <% @capsules.each do |capsule| %>
+    <% if capsule.status == "draft" %>
+      <%= render partial: "capsules/draft_capsule", locals: { capsule: capsule } %>
+    <% elsif capsule.status == 'unlocked' %>
+      <%= render partial: "capsules/unlocked_capsule", locals: { capsule: capsule } %>
+    <% else %>
+      <%= render partial: "capsules/locked_capsule", locals: { capsule: capsule } %>
+    <% end %>
+  <% end %>
+</div>
