@@ -1,5 +1,6 @@
 class CapsulesController < ApplicationController
   def index
+    @capsules = Capsule.where(user: current_user)
   end
 
   def show
