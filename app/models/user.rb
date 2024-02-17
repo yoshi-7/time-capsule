@@ -8,5 +8,5 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  validates :first_name, :last_name, :avatar, presence: true
+  validates :first_name, :last_name, presence: true
 end
