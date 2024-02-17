@@ -1,11 +1,13 @@
 class CapsulesController < ApplicationController
   def index
+    @capsules = Capsule.where(user: current_user)
   end
 
   def show
   end
 
   def new
+    @capsule = Capsule.new()
   end
 
   def create
@@ -13,7 +15,6 @@ class CapsulesController < ApplicationController
 
   def edit
     @capsule = Capsule.find(params[:id])
-    render _form_capsule
   end
 
   def update
@@ -30,4 +31,5 @@ class CapsulesController < ApplicationController
   def capsule_params
     params.require(:capsule).permit(:user)
   end
+
 end
