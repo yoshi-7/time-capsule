@@ -1,0 +1,20 @@
+<div class="container d-flex flex-column border-bottom border-light-gray">
+  <div class="w-100 d-flex gap-2 align-items-center mt-3">
+    <span class="text-secondary material-symbols-outlined">lock_clock</span>
+    <h6 class="text-secondary fw-bold mb-0"><%= capsule.name %></h6>
+  </div>
+  <div class="d-flex justify-content-between mt-2 mb-3">
+    <div class="h-100 d-flex align-content-end">
+      <p class="text-secondary mb-0 small"><%= capsule.created_at.strftime("%d/%m/%Y")%></p>
+    </div>
+    <div class="d-flex flex-column justify-end">
+      <div class="progress" style="width: 120px; height: 4px;">
+        <% remaining_days = (capsule.unlock_date - Time.now.to_date).to_i %>
+        <% encapsulation_days = (capsule.unlock_date - capsule.encapsulation_date).to_i %>
+        <% percentage = (remaining_days * 100) / encapsulation_days %>
+        <div class="progress-bar bg-warning" role="progressbar" style="width: <%= (100 - percentage) %>%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 text-warning mb-0 small">Locked for <%= (capsule.unlock_date - Time.now.to_date).to_i %> days</p>
+    </div>
+  </div>
+</div>
