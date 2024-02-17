@@ -1,11 +1,13 @@
 class CapsulesController < ApplicationController
   def index
+    @capsules = Capsule.where(user: current_user)
   end
 
   def show
   end
 
   def new
+    @capsule = Capsule.new()
   end
 
   def create
@@ -19,4 +21,7 @@ class CapsulesController < ApplicationController
 
   def destroy
   end
+
+  private
+
 end
