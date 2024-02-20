@@ -1,2 +1,19 @@
+<%= link_to 'Add message', new_capsule_message_path(@capsule) %>
 <%= simple_form_for(@capsule) do |f| %>
+  <%= f.input :photos,
+              required: true,
+              autofocus: true,
+              as: :file,
+              input_html: { multiple: true } %>
+  <%= f.input :videos,
+              required: true,P
+              autofocus: true,
+              as: :file,
+              input_html: { multiple: true } %>
+  <%= f.input :audios,
+              required: true,
+              autofocus: true,
+              as: :file,
+              input_html: { multiple: true } %>
+
 <% end %>

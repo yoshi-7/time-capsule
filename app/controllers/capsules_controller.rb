@@ -8,6 +8,8 @@ class CapsulesController < ApplicationController
 
   def new
     @capsule = Capsule.new()
+    @capsule.user = current_user
+    @capsule.save!
   end
 
   def create
