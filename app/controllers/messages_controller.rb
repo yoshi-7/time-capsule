@@ -6,7 +6,14 @@ class MessagesController < ApplicationController
   end
 
   def create
-
+    @message = Message.new(message_params)
+    @capsule = Capsule.find(params[:capsule_id])
+    @message.capsule = @capsule
+    if @message.save
+      redirect_to edit_capsule_path(@capsule)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -16,5 +23,11 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def message_params
+    params.require(:message).permit(:title, :content, :capsule_id)
   end
 end

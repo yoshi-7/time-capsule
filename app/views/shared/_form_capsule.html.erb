@@ -1,19 +1,29 @@
-<%= link_to 'Add message', new_capsule_message_path(@capsule) %>
-<%= simple_form_for(@capsule) do |f| %>
-  <%= f.input :photos,
-              required: true,
-              autofocus: true,
-              as: :file,
-              input_html: { multiple: true } %>
-  <%= f.input :videos,
-              required: true,P
-              autofocus: true,
-              as: :file,
-              input_html: { multiple: true } %>
-  <%= f.input :audios,
-              required: true,
-              autofocus: true,
-              as: :file,
-              input_html: { multiple: true } %>
+<div class="container">
+  <div class="container mt-3">
+    <% @capsule.messages.each do |message| %>
+      <div class="form-control">
+        <p><%= message.title %></p>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
 
-<% end %>
+  <%= link_to 'Add message', new_capsule_message_path(@capsule) %>
+  <%= simple_form_for(@capsule) do |f| %>
+    <%= f.input :photos,
+                required: true,
+                autofocus: true,
+                as: :file,
+                input_html: { multiple: true } %>
+    <%= f.input :videos,
+                required: true,
+                autofocus: true,
+                as: :file,
+                input_html: { multiple: true } %>
+    <%= f.input :audios,
+                required: true,
+                autofocus: true,
+                as: :file,
+                input_html: { multiple: true } %>
+  <% end %>
+</div>
