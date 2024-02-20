@@ -1,0 +1,21 @@
+<div class="container d-flex flex-column border-bottom border-light-gray">
+  <div class="d-flex flex-column justify-content-between mt-2 mb-3">
+    <div class="h-100 d-flex align-content-end gap-2">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag(current_user.avatar, class: "rounded-circle") %>
+      <% else %>
+        <% colors = ["text-bg-primary", "text-bg-danger", "text-bg-warning", "text-bg-dark", "text-bg-info"] %>
+        <div class="avatar-small <%= colors.sample %> d-flex align-items-center justify-content-center">
+          <p class="text-light small mb-0"><%= current_user.first_name[0]%></p>
+        </div>
+      <% end %>
+      <p class="text-secondary mb-0 small">Send by <%= capsule.user.first_name %> on <%= capsule.encapsulation_date.strftime("%d-%m-%Y")%></p>
+    </div>
+    <div class="d-flex flex-column justify-end mt-2">
+      <div class="progress" style="width: 120px; height: 4px;">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 text-success mb-0 small">Ready to be open</p>
+    </div>
+  </div>
+</div>
