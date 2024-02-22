@@ -1,9 +1,12 @@
 <div class="container">
+  <%= link_to 'Back', capsules_path, method: :patch %>
   <div class="container mt-3">
     <% @capsule.messages.each do |message| %>
       <div class="form-control">
         <p><%= message.title %></p>
         <p><%= message.content %></p>
+        <%= link_to 'Edit', edit_capsule_message_path(@capsule, message) %>
+        <%= button_to 'Delete', capsule_message_path(@capsule, message), method: :delete %>
       </div>
     <% end %>
   </div>

@@ -22,7 +22,7 @@ class CapsulesController < ApplicationController
   def update
     @capsule = Capsule.find(params[:id])
     @capsule.update(params[:capsule])
-    redirect_to capsule_path(@capsule)
+    redirect_to capsules_path
   end
 
   def destroy
