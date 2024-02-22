@@ -1,9 +1,11 @@
-<div class="container d-flex flex-column mt-1 border-bottom border-light-gray">
-  <div class="w-100 d-flex gap-2 align-items-center mt-3">
-    <span class="badge bg-warning "><%= capsule.status.capitalize %></span>
-    <h6 class="fw-bold mb-0"><%= capsule.name %></h6>
+<%= link_to edit_capsule_path(capsule) do %>
+  <div class="container d-flex flex-column mt-1 border-bottom border-light-gray">
+    <div class="w-100 d-flex gap-2 align-items-center mt-3">
+      <span class="badge bg-warning "><%= capsule.status.capitalize %></span>
+      <h6 class="fw-bold mb-0"><%= capsule.name %></h6>
+    </div>
+    <div class="d-flex justify-content-between mt-2 mb-3">
+      <p class="mb-0 small"><%= capsule.created_at.strftime("%d/%m/%Y")%></p>
+    </div>
   </div>
-  <div class="d-flex justify-content-between mt-2 mb-3">
-    <p class="mb-0 small"><%= capsule.created_at.strftime("%d/%m/%Y")%></p>
-  </div>
-</div>
+<% end %>
