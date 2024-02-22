@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   end
 
   resources :capsules do
-    resources :messages, only: [:new, :create, :edit, :update]
+    resources :messages, only: [:new, :create, :edit, :update, :destroy]
     resources :user_capsules, only: [:create]
   end
-  resources :messages, only: [:destroy]
+  # resources :messages, only: [:destroy]
 end

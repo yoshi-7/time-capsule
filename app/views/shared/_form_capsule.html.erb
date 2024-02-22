@@ -4,6 +4,8 @@
       <div class="form-control">
         <p><%= message.title %></p>
         <p><%= message.content %></p>
+        <%= link_to 'Edit', edit_capsule_message_path(@capsule, message) %>
+        <%= button_to 'Delete', capsule_message_path(@capsule, message), method: :delete %>
       </div>
     <% end %>
   </div>
