@@ -7,5 +7,4 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
-pin "dropzone" # @6.0.0
-pin "just-extend" # @5.1.1
+pin "@rails/activestorage", to: "@rails--activestorage.js" # @7.1.3

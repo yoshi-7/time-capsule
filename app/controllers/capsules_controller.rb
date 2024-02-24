@@ -1,4 +1,6 @@
 class CapsulesController < ApplicationController
+before_action :set_capsule, only: [:edit, :update]
+
   def index
     @capsules = Capsule.where(user: current_user)
   end
@@ -16,13 +18,17 @@ class CapsulesController < ApplicationController
   end
 
   def edit
-    @capsule = Capsule.find(params[:id])
   end
 
   def update
-    @capsule = Capsule.find(params[:id])
-    @capsule.update(params[:capsule])
-    redirect_to capsules_path
+    if @capsule.update!(capsule_params)
+      respond_to do |format|
+        format.html { redirect_to capsules_path, notice: 'Capsule was successfully updated' }
+        format.json { render "" }
+      end
+    else
+      format.html { render :edit, status: unprocessable_entity }
+    end
   end
 
   def destroy
@@ -30,8 +36,12 @@ class CapsulesController < ApplicationController
 
   private
 
+  def set_capsule
+    @capsule = Capsule.find(params[:id])
+  end
+
   def capsule_params
-    params.require(:capsule).permit(:user, photos: [], videos: [], audio: [])
+    params.require(:capsule).permit(:user, photos: [], videos: [], audios: [])
   end
 
 end
