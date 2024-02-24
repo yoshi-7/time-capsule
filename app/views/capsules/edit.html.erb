@@ -1,1 +1,4 @@
-<%= render "shared/form_capsule", local: { capsule: @capsule } %>
+<div data-controller="toggle">
+  <%= render "shared/form_capsule", local: { capsule: @capsule } %>
+  <%= render "shared/form_capsule_finalize", local: { capsule: @capsule } %>
+</div>

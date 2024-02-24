@@ -33,4 +33,5 @@ class CapsulesController < ApplicationController
   def capsule_params
     params.require(:capsule).permit(:user, photos: [], videos: [], audio: [])
   end
+
 end
