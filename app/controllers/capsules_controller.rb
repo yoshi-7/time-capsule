@@ -21,7 +21,7 @@ class CapsulesController < ApplicationController
 
   def update
     @capsule = Capsule.find(params[:id])
-    @capsule.update(params[:capsule])
+    @capsule.update(capsule_params)
     redirect_to capsules_path
   end
 
@@ -31,7 +31,8 @@ class CapsulesController < ApplicationController
   private
 
   def capsule_params
-    params.require(:capsule).permit(:user, photos: [], videos: [], audio: [])
+    params.require(:capsule).permit(:user, :unlock_date, :email, photos: [], videos: [], audio: [])
   end
+  private
 
 end
