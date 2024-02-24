@@ -1,3 +1,12 @@
-<div class="container">
-  # code ici chef
+<div data-toggle-target="finalize" class="d-none container">
+
+finalize your capsule
+
+  <div class="container mt-3">
+    <button data-action="click->toggle#toggleFinalize">cancel</button>
+    <%= simple_form_for(@capsule) do |f| %>
+      
+      <%= f.button :submit %>
+    <% end %>
+  </div>
 </div>
