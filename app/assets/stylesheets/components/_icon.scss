@@ -1,0 +1,17 @@
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  border-radius: 50%;
+  color: $green;
+
+  i{
+    width: 60px;
+    margin: 4px;
+  }
+
+  p {
+    margin-left: 16px;
+  }
+}
