@@ -2,13 +2,13 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["capsule", "tabBtn", "draft", "finalize"];
-  
+  static targets = ["capsule", "tabBtn", "partial"];
+
   connect() {
     console.log('toggle')
   }
 
-  toggleDisplay() {
+  toggleNavTab() {
     this.capsuleTargets.forEach(capsule => {
       console.log(capsule)
       capsule.classList.toggle("d-none");
@@ -18,8 +18,9 @@ export default class extends Controller {
     })
   }
 
-  toggleFinalize() {
-    this.draftTarget.classList.toggle("d-none");
-    this.finalizeTarget.classList.toggle("d-none");
+  toggleCaspuleDataPartial() {
+    this.partialTargets.forEach(page => {
+      page.classList.toggle("d-none");
+     })
   }
 }
