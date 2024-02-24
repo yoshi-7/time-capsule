@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import PhotosController from "./photos_controller"
-application.register("photos", PhotosController)
+import DropzoneController from "./dropzone_controller"
+application.register("dropzone", DropzoneController)
 
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
