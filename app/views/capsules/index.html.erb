@@ -11,7 +11,7 @@
           <%= render partial: "capsules/unlocked_capsule", locals: { capsule: capsule } %>
         </div>
       <% else %>
-        <div>
+        <div data-toggle-target="capsule">
           <%= render partial: "capsules/locked_capsule", locals: { capsule: capsule } %>
         </div>
       <% end %>
