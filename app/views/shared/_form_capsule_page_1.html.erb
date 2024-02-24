@@ -1,4 +1,4 @@
-<div class="container" data-controller="photos" data-toggle-target="draft">
+<div class="container" data-controller="photos" data-toggle-target="partial">
   <%= link_to 'Back', capsules_path, method: :patch %>
   <div class="container mt-3">
     <% @capsule.messages.each do |message| %>
@@ -30,5 +30,5 @@
                 input_html: { multiple: true } %>
   <% end %>
 
-  <button data-action="click->toggle#toggleFinalize">finalize</button>
+  <button data-action="click->toggle#toggleCaspuleDataPartial">Next</button>
 </div>
