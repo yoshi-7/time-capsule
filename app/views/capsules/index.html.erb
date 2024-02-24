@@ -1,15 +1,22 @@
-<%= render "shared/navbar" %>
-<div class="container p-4">
-  <% @capsules.each do |capsule| %>
-    <% if capsule.status == "draft" %>
-      <%= render partial: "capsules/draft_capsule", locals: { capsule: capsule } %>
-    <% elsif capsule.status == 'unlocked' %>
-      <%= render partial: "capsules/unlocked_capsule", locals: { capsule: capsule } %>
-    <% else %>
-      <%= render partial: "capsules/locked_capsule", locals: { capsule: capsule } %>
+<div data-controller="toggle" class="container">
+  <%= render "shared/navbar" %>
+  <div class="container p-4">
+    <% @capsules.each do |capsule| %>
+      <% if capsule.status == "draft" %>
+        <div data-toggle-target="capsule">
+          <%= render partial: "capsules/draft_capsule", locals: { capsule: capsule } %>
+        </div>
+      <% elsif capsule.status == 'unlocked' %>
+        <div class="d-none" data-toggle-target="capsule">
+          <%= render partial: "capsules/unlocked_capsule", locals: { capsule: capsule } %>
+        </div>
+      <% else %>
+        <div>
+          <%= render partial: "capsules/locked_capsule", locals: { capsule: capsule } %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-
+  </div>
   <div class="text-center mt-5">
     <%= link_to "+ Create New Capsule", new_capsule_path, class: "btn btn-dark rounded-pill"%>
   </div>
