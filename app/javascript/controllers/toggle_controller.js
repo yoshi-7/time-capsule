@@ -2,25 +2,26 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["capsule", "tabBtn", "partial"];
+  static targets = ["capsule", "tabBtn", "capsuleInput"]
 
   connect() {
-    console.log('toggle')
+    console.log('Toggle controller connected')
+    console.log(this.capsuleInputTargets)
   }
 
   toggleNavTab() {
     this.capsuleTargets.forEach(capsule => {
-      console.log(capsule)
-      capsule.classList.toggle("d-none");
+      capsule.classList.toggle("d-none")
     });
     this.tabBtnTargets.forEach(target => {
-      target.classList.toggle("tab-active");
+      target.classList.toggle("tab-active")
     })
   }
 
-  toggleCaspuleDataPartial() {
-    this.partialTargets.forEach(page => {
-      page.classList.toggle("d-none");
+  toggleInputs() {
+    console.log(this.capsuleInputTargets)
+    this.capsuleInputTargets.forEach(input => {
+      input.classList.toggle("d-none")
      })
   }
 }
