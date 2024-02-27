@@ -1,8 +1,7 @@
 <div data-toggle-target="partial" class="d-none container">
   <h3>PAGE 2: SET THE RECIPIENTS + COUNTDOWN</h3>
   <div class="container mt-3">
-    <button data-action="click->toggle#toggleCaspuleDataPartial">cancel</button>
-    
+    <button data-action="click->toggle#toggleCaspuleDataPartial" class="btn btn-dark rounded-pill px-4">Back</button>
     <%= simple_form_for(@capsule) do |f| %>
       <div data-controller="add-recipients-email">
         <label for="email_field">Enter one or several recipient-s email-s:</label>

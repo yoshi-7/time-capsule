@@ -1,4 +1,4 @@
-<div class="container" data-controller="photos" data-toggle-target="partial">
+<div class="container" data-toggle-target="partial">
   <%= link_to 'Back', capsules_path, method: :patch %>
   <div class="container mt-3">
     <% @capsule.messages.each do |message| %>
@@ -12,12 +12,19 @@
   </div>
 
   <%= link_to 'Add message', new_capsule_message_path(@capsule) %>
-  <%= simple_form_for(@capsule) do |f| %>
+  <div data-dropzone-target="photoThumbnails">
+    <% @capsule.photos.each do |photo| %>
+      <%# <%= render partial: "capsules/thumbnail", locals: { photo: photo } %> %>
+    <% end %>
+  </div>
+  <%= simple_form_for @capsule, html: { multipart: true } do |f| %>
     <%= f.input :photos,
+                direct_upload: true,
                 required: true,
                 autofocus: true,
                 as: :file,
                 input_html: { multiple: true } %>
+
     <%= f.input :videos,
                 required: true,
                 autofocus: true,
@@ -28,7 +35,9 @@
                 autofocus: true,
                 as: :file,
                 input_html: { multiple: true } %>
+    <%= f.submit %>
   <% end %>
-
-  <button data-action="click->toggle#toggleCaspuleDataPartial">Next</button>
+  <div class="d-flex justify-content-center w-100">
+    <button data-action="click->toggle#toggleCaspuleDataPartial" class="btn btn-dark rounded-pill px-4" >Next</button>
+  </div>
 </div>
