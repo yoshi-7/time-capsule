@@ -41,7 +41,8 @@ before_action :set_capsule, only: [:edit, :update]
   end
 
   def capsule_params
-    params.require(:capsule).permit(:user, photos: [], videos: [], audios: [])
+    params.require(:capsule).permit(:user, :unlock_date, photos: [], videos: [], audios: [])
   end
+  private
 
 end
