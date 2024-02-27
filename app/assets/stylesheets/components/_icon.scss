@@ -2,16 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 8px;
-  border-radius: 50%;
+  width: 40px;
   color: $green;
-
-  i{
-    width: 60px;
-    margin: 4px;
-  }
-
-  p {
-    margin-left: 16px;
-  }
 }
