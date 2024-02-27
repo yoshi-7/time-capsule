@@ -1,6 +1,6 @@
 class CapsulesController < ApplicationController
-  before_action :set_capsule, only: [:edit, :update]
 
+before_action :set_capsule, only: [:edit, :update, :destroy]
 
   def index
     @capsules = Capsule.where(user: current_user)
@@ -22,11 +22,20 @@ class CapsulesController < ApplicationController
   end
 
   def update
-    @capsule.update(params[:capsule])
-    redirect_to capsules_path
+    if @capsule.update!(capsule_params)
+      respond_to do |format|
+        format.html { redirect_to capsules_path, notice: 'Capsule was successfully updated' }
+        format.json { render "" }
+      end
+    else
+      format.html { render :edit, status: unprocessable_entity }
+    end
   end
 
   def destroy
+    if @capsule.destroy
+      redirect_to capsules_path
+    end
   end
 
   def confirmation
@@ -40,7 +49,7 @@ class CapsulesController < ApplicationController
   end
 
   def capsule_params
-    params.require(:capsule).permit(:user, photos: [], videos: [], audio: [])
+    params.require(:capsule).permit(:name, :user, :unlock_date, photos: [], videos: [], audios: [])
   end
 
 end
