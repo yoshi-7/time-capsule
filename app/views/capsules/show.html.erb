@@ -1,0 +1,31 @@
+
+
+<div class="container d-flex flex-column border-bottom border-light-gray">
+  <div class="container title text-center mb-5 mt-5">
+    <h1> 🔮🕰️ Your capsule traveled through time to get pass to you! 🕰️🔮 </h1>
+  </div>
+  
+  <div class="capsule container d-flex flex-column border-bottom border-light-gray mb-5 mt-5">
+    <strong> <%= @capsule.name %> </strong>
+    <p> Sent by <strong><%= @capsule.user.name %> </strong> on <%= @capsule.created_at.strftime("%d/%m/%Y") %></p>
+  </div>
+
+  <div class="messages">
+    <% if @capsule.messages.present? %>
+      <p> Your capsule contains <%= @capsule.messages.length %> to be discovered: </p>
+      <% @capsule.messages.each do |message| %>
+        <li>
+          <p> <%= message.title %></p>
+          <p> <%= message.content %></p>
+        </li>
+      <% end %>
+    <% else %> 
+      <%# TODO: no message %>
+    <% end %>
+  </div>
+
+
+  <button class="btn btn-primary"> Save it for eternity 💎🪨🪦 </button>
+
+</div>
+
