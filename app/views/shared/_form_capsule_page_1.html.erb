@@ -17,16 +17,15 @@
       <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
         <%= f.input :photo, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
         <div class="dropzone-msg dz-message needsclick text-gray-600">
-          <h3 class="dropzone-msg-title">Glissez-déposez vos dossiers / photos ou cliquez ici pour parcourir vos fichiers</h3>
-          <span class="dropzone-msg-desc text-sm">Taille maximale de 10 MB par fichier. Type de fichiers : jpg, png</span>
+          <p class="dropzone-msg-title">Select photos to add to your capsule</p>
         </div>
       </div>
       <div class="d-flex justify-content-center">
-        <%= f.submit 'Sauvegarder', class: 'btn btn-default mt-3' %>
+        <%# <%= f.submit 'Sauvegarder', class: 'btn btn-default mt-3' %>
       </div>
     <% end %>
 
-  
+
   <div class="d-flex justify-content-center w-100">
     <button data-action="click->toggle#toggleCaspuleDataPartial" class="btn btn-dark rounded-pill px-4" >Next</button>
   </div>

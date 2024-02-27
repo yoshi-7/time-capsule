@@ -101,7 +101,7 @@ class DirectUploadController {
     this.hiddenInput = this.createHiddenInput();
     this.directUpload.create((error, attributes) => {
       if (error) {
-        removeElement(this.hiddenInput);
+        this.removeElement(this.hiddenInput);
         this.emitDropzoneError(error);
       } else {
         this.hiddenInput.value = attributes.signed_id;
@@ -114,7 +114,7 @@ class DirectUploadController {
     const input = document.createElement("input");
     input.type = "hidden";
     input.name = this.source.inputTarget.name;
-    insertAfter(input, this.source.inputTarget);
+    this.source.insertAfter(input, this.source.inputTarget);
     return input;
   }
 
