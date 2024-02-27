@@ -1,5 +1,5 @@
 class CapsulesController < ApplicationController
-before_action :set_capsule, only: [:edit, :update]
+before_action :set_capsule, only: [:edit, :update, :destroy]
 
   def index
     @capsules = Capsule.where(user: current_user)
@@ -32,6 +32,9 @@ before_action :set_capsule, only: [:edit, :update]
   end
 
   def destroy
+    if @capsule.destroy
+      redirect_to capsules_path
+    end
   end
 
   private
@@ -41,7 +44,7 @@ before_action :set_capsule, only: [:edit, :update]
   end
 
   def capsule_params
-    params.require(:capsule).permit(:user, :unlock_date, photos: [], videos: [], audios: [])
+    params.require(:capsule).permit(:name, :user, :unlock_date, photos: [], videos: [], audios: [])
   end
   private
 
