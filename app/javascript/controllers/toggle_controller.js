@@ -6,7 +6,6 @@ export default class extends Controller {
 
   connect() {
     console.log('Toggle controller connected')
-    console.log(this.capsuleInputTargets)
   }
 
   toggleNavTab() {
@@ -19,7 +18,6 @@ export default class extends Controller {
   }
 
   toggleInputs() {
-    console.log(this.capsuleInputTargets)
     this.capsuleInputTargets.forEach(input => {
       input.classList.toggle("d-none")
      })
