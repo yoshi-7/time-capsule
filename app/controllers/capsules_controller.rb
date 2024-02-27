@@ -17,6 +17,15 @@ before_action :set_capsule, only: [:edit, :update]
   def create
   end
 
+  def create_media
+    @pack = Capsule.find(params[:capsule_id])
+    params[:capsule][:photo].each do |blob|
+      @attachment = @capsule.attachments.build(photo: blob)
+      @attachment.save
+    end
+    redirect_to edit_capsule_path(@capsule)
+  end
+
   def edit
   end
 
