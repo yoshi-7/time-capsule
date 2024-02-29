@@ -1,0 +1,31 @@
+
+
+<div class="audios">
+  <p> Your capsule contains <%= @capsule.audio.length %> to be heard: </p>
+  @capsule.audios.each do |audio|
+    <li>
+      <p> <%= audio.content %></p>
+    </li>
+  end
+</div>
+
+<div class="photos">
+  <p> Your capsule contains <%= @capsule.photo.length %> to be seen: </p>
+  @capsule.photos.each do |photo|
+    <li>
+      <p> <%= photos.content %></p>
+    </li>
+  end
+</div>
+
+<div class="videos">
+  <p> Your capsule contains <%= @capsule.video.length %> to be watched: </p>
+  @capsule.videos.each do |video|
+    <li>
+      <p> <%= videos.content %></p>
+    </li>
+  end
+</div>
+
+<btn class="btn btn-primary">Save it for eternity 💎🪨🪦</btn>
+

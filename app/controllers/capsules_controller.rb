@@ -7,6 +7,7 @@ before_action :set_capsule, only: [:edit, :update, :destroy]
   end
 
   def show
+    @capsule = Capsule.find(params[:id])
   end
 
   def new
@@ -61,5 +62,4 @@ before_action :set_capsule, only: [:edit, :update, :destroy]
   def capsule_params
     params.require(:capsule).permit(:name, :user, :unlock_date, photos: [], videos: [], audios: [])
   end
-
 end

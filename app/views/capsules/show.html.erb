@@ -1,0 +1,54 @@
+<div class="container d-flex flex-column border-bottom border-light-gray mt-3 mb-3">
+  <div class="container title text-center mb-3 mt-5">
+    <h1> 🔮 Your capsule 🕰️ traveled through time to get pass to you! </h1>
+  </div>
+  
+  <div class="capsule container d-flex flex-column border-bottom border-light-gray mt-3">
+    <h4> 💊 <strong> <%= @capsule.name %> 💊 </strong> </h4>
+    <p>Sent by <strong> <%= @capsule.user.name %> </strong> on <%= @capsule.created_at.strftime("%d/%m/%Y") %></p>
+  </div>
+
+  <div class="messages container bg-light rounded d-flex flex-column border-bottom border-light-gray mt-3" style="background-color: light-grey; border-radius=5px;">
+    <% if @capsule.messages.present? %>
+      <h4> 📜 Your capsule contains <strong> <%= @capsule.messages.length %> messages: </strong></h4>
+      <% @capsule.messages.each do |message| %>
+        <li class="message-list d-flex flex-column border-bottom border-light-gray mb-2 p-2">
+          <strong> ✒️<%= message.title  %></strong>
+          <em> <%= message.content %></em>
+        </li>
+      
+      <% end %>
+    <% else %> 
+    <% end %>
+  </div>
+
+  <div class="photos container bg-light rounded d-flex flex-column border-bottom border-light-gray mt-3 mb-3">
+    <p> 📷 Your capsule contains <%= @capsule.photos.length %> pictures: </p>
+    <% @capsule.photos.each do |photo| %>
+      <li>
+        <p> <%= photos.content %></p>
+      </li>
+    <% end %>
+  </div>
+
+  <div class="videos container bg-light rounded d-flex flex-column border-bottom border-light-gray mt-3 mb-3">
+    <p> 📼 Your capsule contains <%= @capsule.videos.length %> videos: </p>
+    <%@capsule.videos.each do |video| %>
+      <li>
+        <p> <%= videos.content %></p>
+      </li>
+    <% end %>
+  </div>
+
+  <div class="audios container bg-light rounded d-flex flex-column border-bottom border-light-gray mt-3 mb-3">
+    <p> 🎤 Your capsule contains <%= @capsule.audios.length %> voice recordings: </p>
+    <%@capsule.audios.each do |audio| %>
+      <li>
+        <p> <%= audios.content %></p>
+      </li>
+    <% end %>
+  </div>
+
+  <button class="btn btn-primary text-white"> 🕰️ Save it for eternity 💎 </button>
+
+</div>
