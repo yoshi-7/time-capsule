@@ -16,6 +16,11 @@ before_action :set_capsule, only: [:edit, :update, :destroy]
   end
 
   def create
+    if @capsule.create!(capsule_params)
+      redirect_to capsules_path, notice: 'Capsule was successfully created'
+    else
+
+    end
   end
 
   def edit
@@ -23,12 +28,8 @@ before_action :set_capsule, only: [:edit, :update, :destroy]
 
   def update
     if @capsule.update!(capsule_params)
-      respond_to do |format|
-        format.html { redirect_to capsules_path, notice: 'Capsule was successfully updated' }
-        format.json { render "" }
-      end
+      redirect_to capsules_path, notice: 'Capsule was successfully updated'
     else
-      format.html { render :edit, status: unprocessable_entity }
     end
   end
 

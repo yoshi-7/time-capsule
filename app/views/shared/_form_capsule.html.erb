@@ -1,21 +1,28 @@
-<div class="container"&>
-  <%= link_to 'Back', capsules_path,  data: { 'toggle-target': 'capsuleInput' }, method: :patch %>
-  <a data-action="click->toggle#toggleInputs" class="d-none" data-toggle-target="capsuleInput">Back</a>
-  <!-- Toggle message section -->
-  <div class="container mt-3">
-    <% @capsule.messages.each do |message| %>
-      <div class="form-control">
-        <p><%= message.title %></p>
-        <p><%= message.content %></p>
-        <%= link_to 'Edit', edit_capsule_message_path(@capsule, message) %>
-        <%= button_to 'Delete', capsule_message_path(@capsule, message), method: :delete %>
-      </div>
-    <% end %>
-  </div>
-  <!-- Capsule form -->
+<div class="container pt-4">
   <%= simple_form_for @capsule, html: { multipart: true } do |f| %>
+    <%= f.button :submit, 'Save as draft', class: 'btn btn-dark rounded-pill px-4 mb-3', data: { 'toggle-target': 'capsuleInput' } %>
+    <a data-action="click->toggle#toggleInputs" class="d-none" data-toggle-target="capsuleInput">Back</a>
+
+    <!-- Capsule Name -->
+
     <%= f.input :name, label: 'Capsule name', wrapper_html: { data: { 'toggle-target': 'capsuleInput' } }, hmtl: { value: @capsule.name } %>
+
+    <!-- Toggle message section -->
+
+    <div class="container mt-3">
+      <% @capsule.messages.each do |message| %>
+        <div class="form-control">
+          <p><%= message.title %></p>
+          <p><%= message.content %></p>
+          <%= link_to 'Edit', edit_capsule_message_path(@capsule, message) %>
+          <%= button_to 'Delete', capsule_message_path(@capsule, message), method: :delete %>
+        </div>
+      <% end %>
+    </div>
     <%= link_to 'Add message', new_capsule_message_path(@capsule), class: "btn btn-dark rounded-pill px-4 mb-3", data: { 'toggle-target': 'capsuleInput' } %>
+
+  <!-- Capsule form -->
+
     <div data-controller="recipients" data-toggle-target="capsuleInput" class="d-none">
         <label for="email_field" class="form-label mb-2">Recipient(s) email(s)</label>
         <div class="d-flex w-100">
@@ -32,9 +39,11 @@
                   html5: true,
                   input_html: { data: { controller: "datepicker" }, value: @capsule.unlock_date },
                   wrapper_html: { class:'d-none', data: { 'toggle-target': 'capsuleInput' } } %>
-    <%= f.button :submit, class: 'btn btn-dark rounded-pill px-4 d-none', data: { 'toggle-target': 'capsuleInput' } %>
+    <%= f.button :submit, 'Next', class: 'btn btn-dark rounded-pill px-4 d-none', data: { 'toggle-target': 'capsuleInput' } %>
   <% end %>
+
   <!-- Photos upload -->
+
   <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: edit_capsule_path(@capsule), method: :patch, remote: true do |f| %>
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
       <%= f.input :photo, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
@@ -47,7 +56,9 @@
     </div>
     <%= f.button :submit, class: 'd-none' %>
   <% end %>
+
   <!-- Videos upload -->
+
   <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: edit_capsule_path(@capsule), method: :patch, remote: true do |f| %>
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
       <%= f.input :video, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
@@ -59,7 +70,9 @@
       </div>
     <%= f.button :submit, class: 'd-none' %>
   <% end %>
+
   <!-- Audios upload -->
+
   <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: edit_capsule_path(@capsule), method: :patch, remote: true do |f| %>
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
       <%= f.input :audio, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
@@ -71,6 +84,9 @@
     </div>
     <%= f.button :submit, class: 'd-none' %>
   <% end %>
+
+  <!-- Ajax toggle button -->
+
   <div class="d-flex justify-content-center w-100">
     <button data-action="click->toggle#toggleInputs" class="btn btn-dark rounded-pill px-4" data-toggle-target="capsuleInput">Next</button>
   </div>
