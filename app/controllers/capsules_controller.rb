@@ -1,5 +1,6 @@
 class CapsulesController < ApplicationController
-before_action :set_capsule, only: [:edit, :update]
+
+before_action :set_capsule, only: [:edit, :update, :destroy]
 
   def index
     @capsules = Capsule.where(user: current_user)
@@ -16,6 +17,11 @@ before_action :set_capsule, only: [:edit, :update]
   end
 
   def create
+    if @capsule.create!(capsule_params)
+      redirect_to capsules_path, notice: 'Capsule was successfully created'
+    else
+
+    end
   end
 
   def edit
@@ -23,16 +29,28 @@ before_action :set_capsule, only: [:edit, :update]
 
   def update
     if @capsule.update!(capsule_params)
-      respond_to do |format|
-        format.html { redirect_to capsules_path, notice: 'Capsule was successfully updated' }
-        format.json { render "" }
-      end
+      redirect_to capsules_path, notice: 'Capsule was successfully updated'
     else
-      format.html { render :edit, status: unprocessable_entity }
     end
   end
 
   def destroy
+    if @capsule.destroy
+      redirect_to capsules_path
+    end
+  end
+
+  def confirmation
+    @capsule = Capsule.find(params[:capsule_id])
+  end
+
+  def create_media
+    @pack = Capsule.find(params[:capsule_id])
+    params[:capsule][:photo].each do |blob|
+      @attachment = @capsule.attachments.build(photo: blob)
+      @attachment.save
+    end
+    redirect_to edit_capsule_path(@capsule)
   end
 
   private
@@ -42,6 +60,6 @@ before_action :set_capsule, only: [:edit, :update]
   end
 
   def capsule_params
-    params.require(:capsule).permit(:user, :unlock_date, photos: [], videos: [], audios: [])
+    params.require(:capsule).permit(:name, :user, :unlock_date, photos: [], videos: [], audios: [])
   end
 end

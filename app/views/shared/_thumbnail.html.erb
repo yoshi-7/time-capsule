@@ -1,8 +1,0 @@
-<div class="col-md-4">
-  <div class="card" data-dropzone-target="photoWrapper">
-    <%= image_tag(photo.variant(resize_to_limit: [100, 100]).processed, class: "card-img-top") %>
-    <div class="card-body">
-      <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-  </div>
-</div>
