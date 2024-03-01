@@ -8,6 +8,19 @@
     <p>Sent by <strong> <%= @capsule.user.name %> </strong> on <%= @capsule.created_at.strftime("%d/%m/%Y") %></p>
   </div>
 
+  <div class="recipient-users-avatar container bg-light rounded border-bottom border-light-gray mt-3 mb-3">
+    <p> 👥 Your capsule was sent to: </p>
+    <div class="d-flex flex-wrap">
+      <% @capsule.user_capsules.each do |user_capsule| %>
+        <div class="avatar-wrapper d-flex flex-column align-items-center">
+          <img src="<%= user_capsule.avatar %>" class="img-fluid rounded-circle mb-1" style="width: 50px; height: 50px;">
+          <p class="text-center mb-0"><%= user_capsule.name %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
   <div class="messages container bg-light rounded d-flex flex-column border-bottom border-light-gray mt-3" style="background-color: light-grey; border-radius=5px;">
     <% if @capsule.messages.present? %>
       <h4> 📜 Your capsule contains <strong> <%= @capsule.messages.length %> messages: </strong></h4>
