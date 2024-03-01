@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["capsule", "tabBtn", "capsuleInput"]
+  static targets = ["capsule", "tabBtn", "capsuleInput", "message", "toggleIcon"]
 
   connect() {
     console.log('Toggle controller connected')
@@ -21,5 +21,12 @@ export default class extends Controller {
     this.capsuleInputTargets.forEach(input => {
       input.classList.toggle("d-none")
      })
+  }
+
+  toggleMessages() {
+    this.messageTargets.forEach(message => {
+      message.classList.toggle("d-none")
+    })
+    this.toggleIconTarget.style.transform = 'rotate(180deg)'
   }
 }

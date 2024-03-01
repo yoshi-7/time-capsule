@@ -1,25 +1,50 @@
 <div class="container pt-4">
   <%= simple_form_for @capsule, html: { multipart: true } do |f| %>
-    <%= f.button :submit, 'Save as draft', class: 'btn btn-dark rounded-pill px-4 mb-3', data: { 'toggle-target': 'capsuleInput' } %>
+    <%= f.button :submit, data: { 'toggle-target': 'capsuleInput' }, class: 'btn' do %>
+      <span class="material-symbols-outlined">save_as</span>
+    <% end %>
     <a data-action="click->toggle#toggleInputs" class="d-none" data-toggle-target="capsuleInput">Back</a>
 
     <!-- Capsule Name -->
 
-    <%= f.input :name, label: 'Capsule name', wrapper_html: { data: { 'toggle-target': 'capsuleInput' } }, hmtl: { value: @capsule.name } %>
+    <%= f.input :name, label: 'Give your capsule a name', wrapper_html: { data: { 'toggle-target': 'capsuleInput' } }, input_html: { value: @capsule.name }, label_html: { class: 'fw-bold' } %>
 
     <!-- Toggle message section -->
-
-    <div class="container mt-3">
+    <div class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleMessages">
+      <%= image_tag("icons/saved-text-icon.svg") %>
+      <p class="fs-6 fw-bold m-0 h-auto">Added photos</p>
+      <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
+    </div>
+    <div class="container mt-2 mb-4 p-0">
       <% @capsule.messages.each do |message| %>
-        <div class="form-control">
-          <p><%= message.title %></p>
+        <div data-toggle-target="message">
+          <div class="d-flex justify-content-between">
+            <p class="fw-bold text-black mb-1"><%= message.title %></p>
+            <div class="d-flex align-items-center">
+              <%= link_to edit_capsule_message_path(@capsule, message), class: 'pe-1 message-icon link-underline link-underline-opacity-0 border-end border-light-gray rounded-0' do %>
+                <span class="material-symbols-outlined">edit_square</span>
+              <% end %>
+              <div class="v-divider"></div>
+              <%= button_to capsule_message_path(@capsule, message), class: 'ps-1 btn p-0 message-icon', method: :delete do %>
+                <span class="material-symbols-outlined">close</span>
+              <% end %>
+            </div>
+          </div>
           <p><%= message.content %></p>
-          <%= link_to 'Edit', edit_capsule_message_path(@capsule, message) %>
-          <%= button_to 'Delete', capsule_message_path(@capsule, message), method: :delete %>
         </div>
       <% end %>
     </div>
-    <%= link_to 'Add message', new_capsule_message_path(@capsule), class: "btn btn-dark rounded-pill px-4 mb-3", data: { 'toggle-target': 'capsuleInput' } %>
+
+    <h6 class="fw-bold mt-4 mb-3">Add new content to your capsule</h6>
+
+    <!-- Add Message -->
+
+    <%= link_to new_capsule_message_path(@capsule), data: { 'toggle-target': 'capsuleInput' }, class: 'link-underline link-underline-opacity-0' do %>
+      <div class="d-flex gap-2 align-items-center">
+        <%= image_tag("icons/text-icon.svg") %>
+        <p class="fs-6 fw-bold m-0 h-auto text-black">Message<p>
+      </div>
+    <% end %>
 
   <!-- Capsule form -->
 
@@ -39,56 +64,60 @@
                   html5: true,
                   input_html: { data: { controller: "datepicker" }, value: @capsule.unlock_date },
                   wrapper_html: { class:'d-none', data: { 'toggle-target': 'capsuleInput' } } %>
-    <%= f.button :submit, 'Next', class: 'btn btn-dark rounded-pill px-4 d-none', data: { 'toggle-target': 'capsuleInput' } %>
+    <div class="d-flex w-100 justify-content-end">
+      <%= f.button :submit, 'Next', class: 'btn btn-dark rounded-pill px-4 d-none', data: { 'toggle-target': 'capsuleInput' } %>
+    </div>
 
-    <!-- Photos upload -->
+  <% end %>
 
-      <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
-        <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-          <%= f.input :photo, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
-          <div class="dropzone-msg dz-message needsclick text-gray-600">
-            <div class="d-flex gap-4">
-              <p class="fw-bold btn btn-dark rounded-pill">Photos<p>
-              </div>
-            </div>
+  <!-- Photos upload -->
+
+  <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
+    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
+      <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <div class="dropzone-msg dz-message needsclick text-gray-600">
+        <div class="d-flex gap-2 align-items-center">
+          <%= image_tag("icons/photo-icon.svg") %>
+          <p class="fs-6 fw-bold m-0 h-auto">Photo<p>
           </div>
-        </div>
-        <%= f.button :submit, class: 'd-none' %>
-      <% end %>
-
-    <!-- Videos upload -->
-
-    <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
-      <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-        <%= f.input :video, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
-        <div class="dropzone-msg dz-message needsclick text-gray-600">
-          <div class="d-flex gap-4">
-            <p class="fw-bold btn btn-dark rounded-pill">Videos<p>
-            </div>
-          </div>
-        </div>
-      <%= f.button :submit, class: 'd-none' %>
-    <% end %>
-
-    <!-- Audios upload -->
-
-    <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
-      <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-        <%= f.input :audio, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
-        <div class="dropzone-msg dz-message needsclick text-gray-600">
-          <div class="d-flex gap-4">
-            <p class="fw-bold btn btn-dark rounded-pill">Audio<p>
-            </div>
         </div>
       </div>
-      <%= f.button :submit, class: 'd-none' %>
-    <% end %>
+    <%= f.button :submit, class: 'd-none' %>
+  <% end %>
 
+  <!-- Videos upload -->
+
+  <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
+    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
+      <%= f.input :video, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <div class="dropzone-msg dz-message needsclick text-gray-600">
+        <div class="d-flex gap-2 align-items-center">
+          <%= image_tag("icons/record-icon.svg") %>
+          <p class="fs-6 fw-bold m-0 h-auto">Video<p>
+          </div>
+        </div>
+      </div>
+    <%= f.button :submit, class: 'd-none' %>
+  <% end %>
+
+  <!-- Audios upload -->
+
+  <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
+    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
+      <%= f.input :audio, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <div class="dropzone-msg dz-message needsclick text-gray-600">
+        <div class="d-flex gap-2 align-items-center">
+          <%= image_tag("icons/audio-icon.svg") %>
+          <p class="fs-6 fw-bold m-0 h-auto">Audio<p>
+          </div>
+      </div>
+    </div>
+    <%= f.button :submit, class: 'd-none' %>
   <% end %>
 
   <!-- Ajax toggle button -->
 
-  <div class="d-flex justify-content-center w-100">
-    <button data-action="click->toggle#toggleInputs" class="btn btn-dark rounded-pill px-4" data-toggle-target="capsuleInput">Next</button>
+  <div class="d-flex justify-content-end w-100 mt-auto">
+    <button data-action="click->toggle#toggleInputs" class="btn fw-bold border-bottom border-light-gray rounded-0" data-toggle-target="capsuleInput">Next</button>
   </div>
 </div>
