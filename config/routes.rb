@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :capsules do
+    resources :details, only: [:index, :create]
     resources :medias, only: [:create]
     resources :messages, only: [:new, :create, :edit, :update, :destroy]
     resources :user_capsules, only: [:create]

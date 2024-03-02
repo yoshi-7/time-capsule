@@ -10,8 +10,11 @@ export default class extends Controller {
 
   add(event) {
     event.preventDefault();
+    const regexp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
     const email = this.inputTarget.value;
-    if (email) {
+    const isEmailValid = email.match(regexp)
+
+    if (isEmailValid) {
       const listItem = document.createElement("li");
       listItem.textContent = email;
 
