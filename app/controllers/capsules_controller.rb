@@ -44,15 +44,6 @@ before_action :set_capsule, only: [:edit, :update, :destroy]
     @capsule = Capsule.find(params[:capsule_id])
   end
 
-  def create_media
-    @pack = Capsule.find(params[:capsule_id])
-    params[:capsule][:photo].each do |blob|
-      @attachment = @capsule.attachments.build(photo: blob)
-      @attachment.save
-    end
-    redirect_to edit_capsule_path(@capsule)
-  end
-
   private
 
   def set_capsule

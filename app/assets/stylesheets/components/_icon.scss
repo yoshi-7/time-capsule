@@ -5,3 +5,15 @@
   width: 40px;
   color: $green;
 }
+
+.message-icon {
+  font-size: 20px;
+  color: $mid-gray;
+  font-weight: 200;
+}
+
+.delete-icon {
+  color: $danger !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+}
