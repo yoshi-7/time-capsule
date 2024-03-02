@@ -73,7 +73,7 @@
   <!-- Photos upload -->
 
   <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post do |f| %>
-    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
+    <div class="dropzone dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
       <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
@@ -83,11 +83,9 @@
         </div>
       </div>
 
-
   <!-- Videos upload -->
 
-
-    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
+    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="1000">
       <%= f.input :videos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
@@ -97,10 +95,9 @@
         </div>
       </div>
 
-
   <!-- Audios upload -->
 
-    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
+    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="100">
       <%= f.input :audios, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
