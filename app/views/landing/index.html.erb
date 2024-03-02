@@ -1,33 +1,28 @@
-
 <div class="container full-page mt-1 mb-1">
 
-  <div class="logo+title+buttons container logo mt-5 mb-5 d-flex p-5 align-items-center bg-info bg-gradient">
-    <div class="container logo mt-5 mb-5">
-      <img src="/logowithouttext.png" style="width: 50%; height: auto;">
+  <div class="logo+title+buttons logo mt-5 mb-5 d-flex p-5 align-items-center bg-info bg-gradient">
+    <div class="logo mt-5 mb-5">
+      <%= image_tag "logos/logowithouttext.png", alt: "Time Capsule Logo", class: "img-fluid rounded-5", style: "max-width: 50%; height: auto;" %>
     </div>
 
-    <div class="container title mt-5 mb-5 text-center">
+    <div class="title mt-5 mb-5 text-center">
       <h1>Time Capsule</h1>
       <p> Unlock the almighty power to travel through time!</p>
     </div>
 
-    <div class="container d-flex justify-content-between m-5 p-5">
+    <div class="d-flex justify-content-between m-5 p-5">
       <a href="/index" class="btn btn-primary mr-2">My Dashboard</a>
       <a href="/signup" class="btn btn-secondary">Sign Up</a>
     </div>
   </div>
 
-  <div class="background-image">
-    <div class="container title-card-description bg-light p-5">
+  <div class="landing-background-image">
       <h1>The Powers of Time Capsule</h1>
-    </div>
-    <div class="container card-description bg-light p-5 d-flex">
-      <img src="/mytimecapsule.png" style="width: 50%; height: auto;">
+      <%= image_tag "mytimecapsule.png", alt: "My Time Capsule image", class: "img-fluid rounded-5", style: "max-width: 15%; height: auto;" %>
       <p> explanation here </p>
-    </div>
   </div>
 
-  <div class="container retrieve-form-wrapper mt-5 mb-5">
+  <div class="retrieve-form-wrapper mt-5 mb-5">
     <h3>Retrieve your Time Capsule:</h3>
       <div class="Time-Capsule-Token">
         <form class="form-inline">
