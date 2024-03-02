@@ -13,7 +13,7 @@
 
   <div class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleMessages">
     <%= image_tag("icons/saved-text-icon.svg") %>
-    <p class="fs-6 fw-bold m-0 h-auto">Added photos</p>
+    <p class="fs-6 fw-bold m-0 h-auto">Added messages</p>
     <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
   <div class="container mt-2 mb-4 p-0">
@@ -34,6 +34,14 @@
         <p><%= message.content %></p>
       </div>
     <% end %>
+  </div>
+
+  <!-- Toggle photos section -->
+
+  <div class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleMessages">
+    <%= image_tag("icons/saved-photo-icon.svg") %>
+    <p class="fs-6 fw-bold m-0 h-auto">Added photos</p>
+    <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
 
 

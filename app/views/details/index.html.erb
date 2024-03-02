@@ -5,20 +5,23 @@
       <p>Back</p>
     </div>
   <% end %>
-  <div data-controller="recipients">
-        <label for="email_field" class="fw-bold form-label mb-2">Add recipient</label>
-        <div class="d-flex w-100 gap-2 mb-4">
-          <input type="email" data-recipients-target="input", class="form-control w-100 me-4">
-          <button data-action="click->recipients#add", class="btn btn-secondary px-4 w-100">+ Add</button>
-        </div>
-        <div class="d-flex flex-wrap gap-4 mb-4" data-recipients-target="list">
-        </div>
+  <%= simple_form_for :confirmation, url: capsule_confirmations_path(@capsule), method: :post do |f| %>
+    <div data-controller="recipients">
+          <label for="email_field" class="fw-bold form-label mb-2">Add recipient</label>
+          <div class="d-flex w-100 gap-2 mb-4">
+            <input type="email" data-recipients-target="input", class="form-control w-100 me-4">
+            <button data-action="click->recipients#add", class="btn btn-secondary px-4 w-100">+ Add</button>
+          </div>
+          <div class="d-flex flex-wrap gap-4 mb-4" data-recipients-target="list">
+          </div>
+        <%= f.input :unlock_date,
+                      as: :date,
+                      required: true,
+                      html5: true,
+                      input_html: { data: { controller: "datepicker", 'action': "input->autosave#save"}, value: @capsule.unlock_date } %>
     </div>
-    <%= simple_form_for @capsule, html: { multipart: true, data: { 'autosave-target': 'form' } } do |f| %>
-      <%= f.input :unlock_date,
-                    as: :date,
-                    required: true,
-                    html5: true,
-                    input_html: { data: { controller: "datepicker", 'action': "input->autosave#save"}, value: @capsule.unlock_date } %>
-    <% end %>
+    <div class="d-flex justify-content-end w-100 mt-auto">
+      <%= f.button :submit, 'Next', class: 'btn fw-bold border-bottom border-light-gray rounded-0' %>
+    </div>
+  <% end %>
 </div>

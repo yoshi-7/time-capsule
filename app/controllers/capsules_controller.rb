@@ -33,10 +33,6 @@ before_action :set_capsule, only: [:edit, :update, :destroy]
     end
   end
 
-  def confirmation
-    @capsule = Capsule.find(params[:capsule_id])
-  end
-
   private
 
   def set_capsule

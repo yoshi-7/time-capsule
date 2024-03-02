@@ -1,9 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="recipients"
-export default class extends Controller {
-  static targets = ["input", "list"];
+let count = 0
 
+// Connects to data-controller="recipients"
+
+export default class extends Controller {
+  static targets = ["input", "list", "nextBtn"];
   connect() {
     console.log("Recipients controller connected");
   }
@@ -15,19 +17,19 @@ export default class extends Controller {
     const isEmailValid = email.match(regexp)
 
     if (isEmailValid) {
+      count += 1
       const element = `
       <div class='d-flex gap-2'>
         <p>${email}</p>
         <span class="material-symbols-outlined" data-action="click->recipients#delete">close</span>
+        <input type="hidden" name="confirmation[email-${count}]" value="${email}">
       </div>`;
       this.listTarget.insertAdjacentHTML('beforeend', element);
       this.inputTarget.value = "";
-
     } else {
       alert('This is not a valid email')
       this.inputTarget.value = "";
     }
-
   }
 
   delete(event) {
