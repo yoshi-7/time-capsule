@@ -1,37 +1,61 @@
-<div class="container full-page mt-1 mb-1">
+<div class="full-screen m-0 p-0">
+  <div class="container-fluid full-page justify-content-center">
+    <div class="logo+title+buttons logo d-flex align-items-center p-3">
+      <div class="logo">
+        <%= image_tag "logos/logowhite.png", alt: "Time Capsule Logo", class: "img-fluid rounded-5", style: "max-width: 50%; height: auto;" %>
+      </div>
 
-  <div class="logo+title+buttons logo mt-5 mb-5 d-flex p-5 align-items-center bg-info bg-gradient">
-    <div class="logo mt-5 mb-5">
-      <%= image_tag "logos/logowithouttext.png", alt: "Time Capsule Logo", class: "img-fluid rounded-5", style: "max-width: 50%; height: auto;" %>
+      <div class="title">
+        <h1 class="text-white">Time Capsule</h1>
+      </div>
     </div>
 
-    <div class="title mt-5 mb-5 text-center">
-      <h1>Time Capsule</h1>
-      <p> Unlock the almighty power to travel through time!</p>
+    <h4 class="text-white text-center"> Unlock the almighty power to travel through time!</h4>
+
+    <div class="justify-content-between text-white d-flex align-items-center p-3">
+        <%= image_tag "mytimecapsule.png", alt: "My Time Capsule image", class: "img-fluid rounded-circle", style: "max-width: 30%; height: auto; text-align: center" %>
+      <div class="landing-buttons"> 
+        <div class="landing-buttons row d-flex">
+          <a href="/index" class="btn btn-secondary p-2 text-white m-2" style="width: 80%;">My Dashboard</a>
+          <a href="/signup" class="btn btn-secondary p-2 text-white m-2" style="width: 80%;">Sign Up</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="landing-background-image mt-5 mb-5 text-center">
+      <h3 class="text-white m-2">The Powers of Time Capsule</h3>
+      <div class="description-card text-white d-flex align-items-center width-80">
+          <p> Engrave your best memories in your Time Capsule to share it on the right time with the right persons!
+        Chose some files to upload, write some heartful messages and share them with your friends & family to revive all these memories together! </p>
+      </div>
     </div>
 
-    <div class="d-flex justify-content-between m-5 p-5">
-      <a href="/index" class="btn btn-primary mr-2">My Dashboard</a>
-      <a href="/signup" class="btn btn-secondary">Sign Up</a>
-    </div>
-  </div>
-
-  <div class="landing-background-image">
-      <h1>The Powers of Time Capsule</h1>
-      <%= image_tag "mytimecapsule.png", alt: "My Time Capsule image", class: "img-fluid rounded-5", style: "max-width: 15%; height: auto;" %>
-      <p> explanation here </p>
-  </div>
-
-  <div class="retrieve-form-wrapper mt-5 mb-5">
-    <h3>Retrieve your Time Capsule:</h3>
+    <div class="retrieve-form-wrapper mt-5 mb-5">
+      <h4 class="text-white text-center mb-3">Retrieve your Time Capsule:</h4>
       <div class="Time-Capsule-Token">
-        <form class="form-inline">
-          <div class="form-group mb-2">
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your code here">
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        <form class="form-inline text-align-center">
+          <div class="input-group" style="width: 80%; margin-left: 10%">
+            <input type="text" class="form-control" style="height: 40px; border-radius: 10px" aria-describedby="emailHelp" placeholder="Enter your code here">
+            <button class="btn">
+              <i class="fa-solid fa-rocket" style="color: #ffffff; font-size: 35px"></i>            
+            </button>          
           </div>
         </form>
       </div>
-  </div>
+    </div>
 
+
+    <div class=" video mt-5">
+      <div class=" landing-background-image video-title bg-light rounded p-3 d-flex justify-content-center border border-5 border-purple">
+        <h3 class="text-dark m-2 text-white">Watch how to unleash your Time Capsule Powers:</h3>
+      </div>
+      <div class="video-wrapper d-flex justify-content-center align-items-center p-3">
+        <video class="video rounded" controls autoplay loop style="width: 90%; border-radius: 10px;">
+        <source src="/videos/introduction-time-capsule.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+
+  </div>
 </div>
