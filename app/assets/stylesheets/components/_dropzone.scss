@@ -1,0 +1,19 @@
+.dropzone {
+  border-width: 2px;
+  border-radius: 0.5rem;
+  border-color: #cbd5e0;
+  border-style: dashed;
+
+  .dropzone-msg-title {
+    font-size: 1rem;
+  }
+
+  .dz-message {
+    opacity: 0.9;
+  }
+}
+
+#dropzone-cover {
+  flex-grow: 2;
+  margin-left: 0.5rem;
+}

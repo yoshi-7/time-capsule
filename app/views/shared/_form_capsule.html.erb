@@ -74,7 +74,7 @@
 
   <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post do |f| %>
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-      <%= f.input :photo, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
           <%= image_tag("icons/photo-icon.svg") %>
@@ -82,14 +82,13 @@
           </div>
         </div>
       </div>
-    <%= f.button :submit, class: 'd-none' %>
-  <% end %>
+
 
   <!-- Videos upload -->
 
-  <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
+
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-      <%= f.input :video, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <%= f.input :videos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
           <%= image_tag("icons/record-icon.svg") %>
@@ -97,14 +96,12 @@
           </div>
         </div>
       </div>
-    <%= f.button :submit, class: 'd-none' %>
-  <% end %>
+
 
   <!-- Audios upload -->
 
-  <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-      <%= f.input :audio, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <%= f.input :audios, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
           <%= image_tag("icons/audio-icon.svg") %>
@@ -112,7 +109,7 @@
           </div>
       </div>
     </div>
-    <%= f.button :submit, class: 'd-none' %>
+    <%= f.button :submit %>
   <% end %>
 
   <!-- Ajax toggle button -->

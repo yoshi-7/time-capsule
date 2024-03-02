@@ -15,3 +15,5 @@ application.register("toggle", ToggleController)
 
 import DropzoneController from "./dropzone_controller"
 application.register("dropzone", DropzoneController)
+
+
