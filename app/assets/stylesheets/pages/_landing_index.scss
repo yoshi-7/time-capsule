@@ -1,0 +1,20 @@
+.background-image {
+  background-image: asset-url('background/futuredoor.png');  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  margin-bottom: auto;
+}
+
+.full-page {
+  background-image: asset-url('velvet.png');  background-size: cover;
+  height: 100vh;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  margin-bottom: auto;
+}

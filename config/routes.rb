@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'landing/index'
+  get 'landing/retrieve_capsule'
   devise_for :users
 
   devise_scope :user do
-    root to: 'devise/sessions#new'
+    root to: 'landing#index'
+    # root to: 'devise/sessions#new'
   end
 
   resources :capsules do
