@@ -17,11 +17,8 @@ before_action :set_capsule, only: [:edit, :update, :destroy]
   end
 
   def create
-    if @capsule.create!(capsule_params)
+     Capsule.create(user: current_user)
       redirect_to capsules_path, notice: 'Capsule was successfully created'
-    else
-
-    end
   end
 
   def edit

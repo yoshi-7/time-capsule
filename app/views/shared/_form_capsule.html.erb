@@ -72,9 +72,9 @@
 
   <!-- Photos upload -->
 
-  <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
+  <%= simple_form_for @capsule, html: {data: { 'toggle-target': 'capsuleInput' }}, url: capsule_medias_path(@capsule), method: :post do |f| %>
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-      <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <%= f.input :photo, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
           <%= image_tag("icons/photo-icon.svg") %>
