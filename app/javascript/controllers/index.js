@@ -8,17 +8,17 @@ import { application } from "./application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
 
-import AutosaveController from "./autosave_controller"
-application.register("autosave", AutosaveController)
+// import AutosaveController from "./autosave_controller"
+// application.register("autosave", AutosaveController)
 
-import DatepickerController from "./datepicker_controller"
-application.register("datepicker", DatepickerController)
+// import DatepickerController from "./datepicker_controller"
+// application.register("datepicker", DatepickerController)
 
-import DropzoneController from "./dropzone_controller"
-application.register("dropzone", DropzoneController)
+// import DropzoneController from "./dropzone_controller"
+// application.register("dropzone", DropzoneController)
 
-import RecipientsController from "./recipients_controller"
-application.register("recipients", RecipientsController)
+// import RecipientsController from "./recipients_controller"
+// application.register("recipients", RecipientsController)
 
-import ToggleController from "./toggle_controller"
-application.register("toggle", ToggleController)
+// import ToggleController from "./toggle_controller"
+// application.register("toggle", ToggleController)
