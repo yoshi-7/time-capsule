@@ -3,24 +3,13 @@
   background-size: cover;
   width: 100%;
   height: 100vh;
-  // padding-top: 64px;
-  // padding-bottom: 64px;
-  // margin-bottom: auto;
+  display: flexbox;
 }
 
-
-// .loader {
-//   background-image: asset-url('capsules/capsuledna.png');
-//   background-size: cover;
-//   width: 100%;
-//   height: 100vh;
-// }
-
 .particles-loader {
-  --uib-size: 90px;
-  --uib-color: rgb(239, 96, 229);
+  --uib-size: 210px;
+  --uib-color: rgb(217, 0, 255);
   --uib-speed: 1.75s;
-  position: relative;
   height: var(--uib-size);
   width: var(--uib-size);
   animation: rotate calc(var(--uib-speed) * 4) linear infinite;
@@ -96,7 +85,27 @@
   }
   &:nth-child(13) {
     --uib-delay: -0.2;
-    transform: rotate(240deg);
+    transform: rotate(212deg);
+  }
+  &:nth-child(14) {
+    --uib-delay: -0.1;
+    transform: rotate(308deg);
+  }
+  &:nth-child(15) {
+    --uib-delay: -0.8;
+    transform: rotate(314deg);
+  }
+  &:nth-child(16) {
+    --uib-delay: -1.2;
+    transform: rotate(331deg);
+  }
+  &:nth-child(17) {
+    --uib-delay: -0.5;
+    transform: rotate(299deg);
+  }
+  &:nth-child(18) {
+    --uib-delay: -0.2;
+    transform: rotate(260deg);
   }
 }
 
