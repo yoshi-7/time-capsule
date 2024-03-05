@@ -6,7 +6,7 @@ import {
   findElement,
   removeElement,
   insertAfter
-} from "/app/javascript/helpers/index.js";
+} from "/javascript/helpers";
 
 Dropzone.autoDiscover = false; // necessary quirk for Dropzone error in console
 
