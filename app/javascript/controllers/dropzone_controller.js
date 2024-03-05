@@ -1,12 +1,12 @@
 import { Controller } from "@hotwired/stimulus";
 import { DirectUpload } from "@rails/activestorage";
 import Dropzone from "dropzone";
-import {
-  getMetaValue,
-  findElement,
-  removeElement,
-  insertAfter
-} from "../helpers";
+// import {
+//   getMetaValue,
+//   findElement,
+//   removeElement,
+//   insertAfter
+// } from "../helpers/helpers";
 
 Dropzone.autoDiscover = false; // necessary quirk for Dropzone error in console
 
@@ -14,6 +14,7 @@ export default class extends Controller {
   static targets = ["input"];
 
   connect() {
+    console.log("Dropzone connected");
     this.dropZone = createDropZone(this);
     this.hideFileInput();
     this.bindEvents();
@@ -65,6 +66,43 @@ export default class extends Controller {
   get form() { return this.element.closest("form") }
 
   get submitButton() { return findElement(this.form, "input[type=submit], button[type=submit]") }
+}
+
+//4 HELPERS
+
+export function getMetaValue(name) {
+  const element = findElement(document.head, `meta[name="${name}"]`);
+  if (element) {
+    return element.getAttribute("content");
+  }
+}
+
+export function findElement(root, selector) {
+  if (typeof root == "string") {
+    selector = root;
+    root = document;
+  }
+  return root.querySelector(selector);
+}
+
+export function toArray(value) {
+  if (Array.isArray(value)) {
+    return value;
+  } else if (Array.from) {
+    return Array.from(value);
+  } else {
+    return [].slice.call(value);
+  }
+}
+
+export function removeElement(el) {
+  if (el && el.parentNode) {
+    el.parentNode.removeChild(el);
+  }
+}
+
+export function insertAfter(el, referenceNode) {
+  return referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
 }
 
 class DirectUploadController {
