@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :capsules do
+    resources :confirmations, only: [:index, :create]
+    resources :details, only: [:index, :create]
     resources :medias, only: [:create]
     resources :messages, only: [:new, :create, :edit, :update, :destroy]
     resources :user_capsules, only: [:create]
-    get '/confirmation', to: 'capsules#confirmation'
   end
-  # resources :messages, only: [:destroy]
 end
