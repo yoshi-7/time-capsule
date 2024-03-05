@@ -1,15 +1,38 @@
 <div>
   <h1>Content added</h1>
-    <%# messages %>
-  <div class="d-flex align-items-center w-50">
-    <div >
-    <i class="icon fa-solid fa-message"></i>
-    <p class="m-2">2 messages</p>
-    <div>
+  <%# messages %>
+  <div data-controller="toggle">
+    <div class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleMessages">
+        <%= image_tag("icons/saved-text-icon.svg") %>
+        <p class="fs-6 fw-bold m-0 h-auto"> <%= @capsule.messages.count %> messages</p>
+        <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
+      </div>
+      <div class="container mt-2 mb-4 p-0">
+        <% @capsule.messages.each do |message| %>
+          <div data-toggle-target="message">
+            <div class="d-flex justify-content-between">
+              <p class="fw-bold text-black mb-1"><%= message.title %></p>
+              <div class="d-flex align-items-center">
+              </div>
+            </div>
+            <p><%= message.content %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  <%# Photos %>
+  <div data-controller="toggle">
+    <div class="d-flex align-items-center w-50">
+    <%# voir s'il faut pas changer le nom de la méthode JS #ToggleMessages en ToggleFiles %>
+     <div class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleMessages">
+      <i class="icon fa-regular fa-image"></i>
+      <p class="m-2"> <%= @capsule.photos.count %> photos</p>
       <i class="down-arrow-icon fa-solid fa-caret-down"></i>
     </div>
-    </div>
   </div>
+   </div>
+
   <%# Audios %>
   <div class="d-flex align-items-center w-50">
     <i class="icon fa-regular fa-file-audio"></i>
@@ -20,12 +43,6 @@
   <div class="d-flex align-items-center w-50">
     <i class="icon fa-brands fa-spotify"></i>
     <p class="m-2">1 playlist</p>
-    <i class="down-arrow-icon fa-solid fa-caret-down"></i>
-  </div>
-  <%# Photos %>
-  <div class="d-flex align-items-center w-50">
-    <i class="icon fa-regular fa-image"></i>
-    <p class="m-2">10 photos</p>
     <i class="down-arrow-icon fa-solid fa-caret-down"></i>
   </div>
   <%# Records %>
