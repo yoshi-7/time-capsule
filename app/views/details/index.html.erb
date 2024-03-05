@@ -5,7 +5,7 @@
       <p>Back</p>
     </div>
   <% end %>
-  <%= simple_form_for :confirmation, url: capsule_confirmations_path(@capsule), method: :post do |f| %>
+  <%= simple_form_for :confirmation, url: capsule_confirmations_path(@capsule), method: :get do |f| %>
     <div data-controller="recipients">
           <label for="email_field" class="fw-bold form-label mb-2">Add recipient</label>
           <div class="d-flex w-100 gap-2 mb-4">
