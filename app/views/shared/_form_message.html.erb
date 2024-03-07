@@ -1,8 +1,10 @@
-<div class="container mt-3">
+<div class="container p-4">
   <%= link_to 'Back', edit_capsule_path(@capsule) %>
   <%= simple_form_for([@capsule, @message]) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.button :submit %>
+    <%= f.input :title, input_html: { placeholder: 'Message title here' } %>
+    <%= f.input :content, label: 'Message', class: 'fw-bold', input_html: { placeholder: 'Type tour message here' } %>
+    <div class="d-flex w-100 justify-content-end">
+      <%= f.button :submit, 'Validate', class:'fw-bold border-bottom border-light-gray rounded-0' %>
+    </div>
   <% end %>
 </div>

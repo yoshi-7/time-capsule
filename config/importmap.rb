@@ -9,3 +9,5 @@ pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "flatpickr" # @4.6.13
 pin "@rails/activestorage", to: "@rails--activestorage.js" # @7.1.3
+pin "dropzone" # @6.0.0
+pin "just-extend" # @5.1.1
