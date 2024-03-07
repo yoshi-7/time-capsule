@@ -1,11 +1,10 @@
-class MediaController < ApplicationController
+class MediasController < ApplicationController
   def create
-    raise
     @capsule = Capsule.find(params[:capsule_id])
-    params[:capsule][:photo].each do |blob|
-      @attachment = @capsule.attachments.build(photo: blob)
-      @attachment.save
-    end
-    redirect_to edit_capsule_path(@capsule)
+    @capsule.photos.attach(params[:capsule][:photos])
+    @capsule.videos.attach(params[:capsule][:videos])
+    @capsule.audios.attach(params[:capsule][:audios])
+    @capsule.save
+    render 'capsules/edit'
   end
 end
