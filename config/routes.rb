@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'landing/index'
   get 'landing/retrieve_capsule'
-  get '/capsules/:capsule_id/confirmation_page', to: 'confirmation_pages#show', as: 'confirmation_page'
   devise_for :users
 
   devise_scope :user do
