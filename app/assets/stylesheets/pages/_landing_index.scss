@@ -1,20 +1,39 @@
-.background-image {
-  background-image: asset-url('background/futuredoor.png');  background-size: cover;
-  background-position: bottom;
+.full-screen {
+  background-image: url('backgrounds/nightbluetriangle.png');
+  height: 192vh;
+  width: 100wh;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  width: 100%;
-  padding-top: 64px;
-  padding-bottom: 64px;
-  margin-bottom: auto;
+  background-attachment: fixed; /* Ajoutez cette ligne */
 }
 
 .full-page {
-  background-image: asset-url('velvet.png');  background-size: cover;
+  background-image: asset-url('backgrounds/futuredoor.jpeg');
+  background-size: cover;
+  background-position: center;
   height: 100vh;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  width: 100%;
-  padding-top: 64px;
-  padding-bottom: 64px;
-  margin-bottom: auto;
+  width: 100vw;
+}
+
+.landing-background-image {
+  background-image: asset-url('backgrounds/velvet.jpeg')!important;
+  background-size: cover;
+  height: 25%;
+  width: 90vw;
+  margin: 0 auto;
+  padding: auto;
+  border-radius: 10px;
+}
+
+// .background-video {
+//   background-image: asset-url('backgrounds/fontgraphical.png')!important;
+//   background-size: cover;
+//   background-position: center;
+//   height: 100vh;
+//   width: 100vw;
+// }
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  opacity: 0.5 !important;
 }
