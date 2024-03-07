@@ -38,16 +38,25 @@
 
   <!-- Toggle photos section -->
 
-  <div class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleMessages">
+  <div id="photos-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#togglePhotos">
     <%= image_tag("icons/saved-photo-icon.svg") %>
     <p class="fs-6 fw-bold m-0 h-auto">Added photos</p>
     <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
+  <div class="container mt-2 mb-4 p-0" data-toggle-target="photos">
+    <% if @capsule.photos.attached? %>
+      <% @capsule.photos.each do |photo| %>
+        <div class="photo-container">
+          <%= cl_image_tag(photo.key, width: 200, height: 200, crop: :fill) %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No photos added yet.</p>
+    <% end %>
+  </div>
 
 
-<%# // cl image tag pour afficher les photos de cloudinary %>
-
-
+<!-- EDIT ZONE-->
   <h6 class="fw-bold mt-4 mb-3">Add new content to your capsule</h6>
 
   <!-- Add Message -->
