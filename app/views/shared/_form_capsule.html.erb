@@ -38,13 +38,25 @@
 
   <!-- Toggle photos section -->
 
-  <div class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleMessages">
+  <div id="photos-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#togglePhotos">
     <%= image_tag("icons/saved-photo-icon.svg") %>
     <p class="fs-6 fw-bold m-0 h-auto">Added photos</p>
     <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
+  <div class="container mt-2 mb-4 p-0" data-toggle-target="photos">
+    <% if @capsule.photos.attached? %>
+      <% @capsule.photos.each do |photo| %>
+        <div class="photo-container">
+          <%= cl_image_tag(photo.key, width: 200, height: 200, crop: :fill) %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No photos added yet.</p>
+    <% end %>
+  </div>
 
 
+<!-- EDIT ZONE-->
   <h6 class="fw-bold mt-4 mb-3">Add new content to your capsule</h6>
 
   <!-- Add Message -->
@@ -61,7 +73,7 @@
 
 <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post do |f| %>
   <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-    <%= f.input :photo, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', 'action': 'change->autosave#save', direct_upload_url: rails_direct_uploads_url } } %>
+    <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', 'action': 'change->autosave#save', direct_upload_url: rails_direct_uploads_url } } %>
     <div class="dropzone-msg dz-message needsclick text-gray-600">
       <div class="d-flex gap-2 align-items-center">
         <%= image_tag("icons/photo-icon.svg") %>
@@ -69,14 +81,14 @@
         </div>
       </div>
     </div>
-  <%= f.button :submit, class: 'd-none' %>
+  <%= f.button :submit, "Upload photos to capsule"%>
 <% end %>
 
 <!-- Videos upload -->
 
 <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
   <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-    <%= f.input :video, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+    <%= f.input :videos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
     <div class="dropzone-msg dz-message needsclick text-gray-600">
       <div class="d-flex gap-2 align-items-center">
         <%= image_tag("icons/record-icon.svg") %>
@@ -84,14 +96,14 @@
         </div>
       </div>
     </div>
-  <%= f.button :submit, class: 'd-none' %>
+  <%= f.button :submit, "Upload videos to capsule"%>
 <% end %>
 
 <!-- Audios upload -->
 
 <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
   <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
-    <%= f.input :audio, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+    <%= f.input :audios, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
     <div class="dropzone-msg dz-message needsclick text-gray-600">
       <div class="d-flex gap-2 align-items-center">
         <%= image_tag("icons/audio-icon.svg") %>
@@ -99,7 +111,7 @@
         </div>
     </div>
   </div>
-  <%= f.button :submit, class: 'd-none' %>
+  <%= f.button :submit, "Upload audios to capsule"%>
 <% end %>
 
 <div class="d-flex justify-content-end w-100 mt-auto">
