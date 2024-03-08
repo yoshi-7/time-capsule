@@ -1,18 +1,33 @@
-<div class="mx-4 mt-4 d-flex flex-column ml-8">
-  <%# avatar logo %>
-  <div class="w-40">
-    <% if current_user.avatar.attached? %>
-      <%= image_tag(current_user.avatar, class: "rounded-circle") %>
-    <% else %>
-      <% colors = ["text-bg-primary", "text-bg-danger", "text-bg-warning", "text-bg-dark", "text-bg-info"] %>
-      <div class="avatar <%= colors.sample%> d-flex align-items-center justify-content-center">
-        <span class="text-light"><%= current_user.first_name[0]%></span>
+<div class="mx-0 p-4 d-flex flex-column">
+
+  <div class="d-flex align-items-center mb-4">
+    <div class="d-flex w-100 gap-3 align-items-center">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag(current_user.avatar, class: "avatar-large") %>
+      <% else %>
+        <% colors = ["text-bg-primary", "text-bg-danger", "text-bg-warning", "text-bg-dark", "text-bg-info"] %>
+        <div class="avatar <%= colors.sample%> d-flex align-items-center justify-content-center">
+          <span class="text-light"><%= current_user.first_name[0]%></span>
+        </div>
+      <% end %>
+      <div>
+        <h1 class="fs-6 text-secondary text-start w-100 mb-0">Welcome back</h1>
+        <h2 class="fw-black fs-3 text-black text-start w-100 mb-0"><%= current_user.first_name %></h2>
       </div>
+    </div>
+    <%= button_to destroy_user_session_path, class: 'btn p-0', method: :delete  do %>
+      <span class="material-symbols-outlined">logout</span>
     <% end %>
   </div>
   <%# Button card %>
   <div class="container mt-3 w-30 p-0 gap-3 d-flex ">
-    <a data-toggle-target="tabBtn" data-action="click->toggle#toggleNavTab" class="tab-active text-secondary link-underline link-underline-opacity-0">Upcoming</a>
-    <a data-toggle-target="tabBtn" data-action="click->toggle#toggleNavTab" class="text-secondary link-underline link-underline-opacity-0">Unlocked</a>
+    <div class="d-flex align-items-center gap-2">
+      <a data-toggle-target="tabBtn" data-action="click->toggle#toggleNavTab" class="tab-active fs-5 text-secondary link-underline link-underline-opacity-0">Upcoming</a>
+      <span data-toggle-target="rocketIcon" class="material-symbols-outlined">rocket_launch</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <a data-toggle-target="tabBtn" data-action="click->toggle#toggleNavTab" class="text-secondary fs-5 link-underline link-underline-opacity-0">Unlocked</a>
+      <span data-toggle-target="rocketIcon" class="material-symbols-outlined d-none">rocket</span>
+    </div>
   </div>
 </div>

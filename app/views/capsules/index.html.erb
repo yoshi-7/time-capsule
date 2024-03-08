@@ -1,24 +1,26 @@
-<div data-controller="toggle" class="container">
-  <%= render "shared/navbar" %>
-  <div class="container p-4 capsules-container">
-    <% @capsules.each do |capsule| %>
-      <% if capsule.status == "draft" %>
-        <div data-toggle-target="capsule">
-          <%= render partial: "capsules/draft_capsule", locals: { capsule: capsule } %>
-        </div>
-      <% elsif capsule.status == 'unlocked' %>
-        <div class="d-none" data-toggle-target="capsule">
-          <%= render partial: "capsules/unlocked_capsule", locals: { capsule: capsule } %>
-        </div>
-      <% else %>
-        <div data-toggle-target="capsule">
-          <%= render partial: "capsules/locked_capsule", locals: { capsule: capsule } %>
-        </div>
+<div data-controller="toggle">
+  <div d class="container p-0">
+    <%= render "shared/navbar" %>
+    <div class="container capsules-container m-0 p-0">
+      <% @capsules.each do |capsule| %>
+        <% if capsule.status == "draft" %>
+          <div data-toggle-target="capsule">
+            <%= render partial: "capsules/draft_capsule", locals: { capsule: capsule } %>
+          </div>
+        <% elsif capsule.status == 'unlocked' %>
+          <div data-toggle-target="capsule" class="d-none">
+            <%= render partial: "capsules/unlocked_capsule", locals: { capsule: capsule } %>
+          </div>
+        <% else %>
+          <div data-toggle-target="capsule">
+            <%= render partial: "capsules/locked_capsule", locals: { capsule: capsule } %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
-<div class="d-flex justify-content-center w-100 position-fixed bottom-0 start-50 translate-middle-x">
-  <%= button_to "New capsule", capsules_path, class: "btn btn-dark px-4 my-4 rounded-pill"%>
-  <div class="blured-background position-absolute"></div>
+  <div class="d-flex justify-content-center w-100 position-fixed bottom-0 start-50 translate-middle-x">
+    <%= button_to "New capsule", capsules_path, class: "btn btn-dark px-4 my-4 rounded-pill"%>
+    <div class="blured-background position-absolute"></div>
+  </div>
 </div>
