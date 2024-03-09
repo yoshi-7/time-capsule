@@ -1,0 +1,32 @@
+.scrollable-container {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #e0e0e0;
+  -ms-overflow-style: none;
+}
+
+.scrollable-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollable-container::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 20px;
+}
+
+.photo-container {
+  flex: none;
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-container:last-child {
+  margin-right: 0;
+}
