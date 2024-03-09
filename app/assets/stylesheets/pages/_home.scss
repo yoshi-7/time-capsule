@@ -14,11 +14,13 @@
   width: 33%;
 }
 .progress-text {
-  color: rgb(167, 104, 186);
+  color: $violet
+}
+
+.bg-violet {
+  color: $violet;
 }
 
 .bg-light-green {
   background-color: #EBFFE6;
 }
-
-

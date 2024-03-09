@@ -6,5 +6,7 @@ class MediasController < ApplicationController
     @capsule.audios.attach(params[:capsule][:audios])
     @capsule.save
     redirect_to edit_capsule_path(@capsule)
+    flash.notice = "Media(s) successfully uploaded"
+
   end
 end

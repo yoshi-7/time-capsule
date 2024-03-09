@@ -115,13 +115,13 @@
 
 <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post do |f| %>
 
-  <div data-controller="dropzone" data-dropzone-max-file-size="100">
+  <div class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="100">
     <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', 'action': 'change->autosave#save', direct_upload_url: rails_direct_uploads_url } } %>
     <div class="dropzone-msg dz-message needsclick text-gray-600">
       <div class="d-flex gap-2 align-items-center">
         <%= image_tag("icons/photo-icon.svg") %>
         <p class="fs-6 fw-bold m-0 h-auto">Photo<p>
-        <div class="spinner">
+        <div class="spinner d-none" data-dropzone-target="messageSpinner">
           <span class="spinner-inner-1"></span>
           <span class="spinner-inner-2"></span>
           <span class="spinner-inner-3"></span>
@@ -135,7 +135,7 @@
 <!-- Videos upload -->
 
 <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
-  <div class="dropzone dropzone-default dz-clickable mt-2 mb-2 dropzone-audio" data-controller="dropzone" data-dropzone-max-file-size="10">
+  <div class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="10">
     <%= f.input :videos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
     <div class="dropzone-msg dz-message needsclick text-gray-600">
       <div class="d-flex gap-2 align-items-center">
@@ -150,7 +150,7 @@
 <!-- Audios upload -->
 
 <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
-  <div class="dropzone dropzone-default dz-clickable mt-2 mb-2" data-controller="dropzone" data-dropzone-max-file-size="10">
+  <div class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="10">
     <%= f.input :audios, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
     <div class="dropzone-msg dz-message needsclick text-gray-600">
       <div class="d-flex gap-2 align-items-center">

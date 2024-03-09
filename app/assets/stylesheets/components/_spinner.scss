@@ -1,13 +1,10 @@
-$spinner: $violet;
+$spinner: $dark-gray;
 $background: white;
 $size: 30px;
 
 html { background-color: $background; }
 
 .spinner {
-  position: absolute;
-  top: calc(50% - #{$size / 2});
-  left: calc(50% - #{$size / 2});
   width: $size;
   height: $size;
   animation: spinner 0.75s linear infinite;

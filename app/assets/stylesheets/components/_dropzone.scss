@@ -2,11 +2,8 @@
   border-width: 2px;
   border-radius: 0.5rem;
   border-color: lighten(#cbd5e0, 5%);
-  border-style: dashed;
   transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out; // Smooth transition for visual feedback.
   &:hover, &.dz-drag-hover {
-    border-color: darken(#e8a4d2, 10%); // Darken on hover for feedback.
-    background-color: rgba(0, 0, 0, 0.05); // Slight background color change on hover.
 
 
   .dropzone-msg-title {
@@ -22,7 +19,6 @@
     }
   }
 }}
-
 
 #dropzone-cover {
   flex-grow: 2;
@@ -93,10 +89,7 @@
     }
   }
 
-  min-height: 150px;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
-  padding: 20px 20px;
+  min-height: 40px;
 
   &.dz-started {
     .dz-message {
@@ -134,7 +127,7 @@
     vertical-align: top;
 
     margin: 16px;
-    min-height: 100px;
+    min-height: 40px;
 
     &:hover {
       // Making sure that always the hovered preview element is on top
@@ -179,7 +172,7 @@
       opacity: 1;
     }
     .dz-details {
-      $background-color: #444;
+
 
       z-index: 20;
 
@@ -192,7 +185,6 @@
       font-size: 13px;
       min-width: 100%;
       max-width: 100%;
-      padding: 2em 1em;
       text-align: center;
       color: rgba(0, 0, 0, 0.9);
 
@@ -201,7 +193,6 @@
       line-height: 150%;
 
       .dz-size {
-        margin-bottom: 1em;
         font-size: 16px;
       }
 
