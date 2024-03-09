@@ -1,2 +1,28 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container background-image vh-100">
+  <div class="home-container">
+
+    <%# <--! Title --> %>
+    <div class="bg-transparent text-center title-wrapper">
+      <%= image_tag "mytimecapsule.png", alt: "My Time Capsule image", class: "img-fluid rounded-circle", style: "max-width: 30%; height: auto; text-align: center" %>
+      <h2 class="text-white">My Time Capsule account</h2>
+    </div>
+
+    <%# <--! video --> %>
+    <div class="video-container">
+      <div class="video-wrapper d-flex justify-content-center align-items-center p-3">
+        <video class="video rounded" controls autoplay loop style="width: 60%; border-radius: 10px;">
+        <source src="/videos/introduction-time-capsule.mp4" type="video/mp4">
+        <%# <%= video_tag "videos/VIDEO-PORTRAIT-INTRO-TIME-CAPSULE. mp4", controls: true, autoplay: true, loop: true, style: "width: 90%; border-radius: 10px;", class: "video-sizing" %> %>
+        </video>
+      </div>
+    </div>
+
+    <%# <--! Dashboard link  --> %>
+    <div class="link-card">
+      <i class="fa-solid fa-arrow-right-long"></i>
+      <%= link_to "My dashboard", capsules_path %>
+      <i class="fa-solid fa-arrow-left-long"></i>
+    </div>
+  </div>
+</div>
+<p>My <br> dashboard</p>
