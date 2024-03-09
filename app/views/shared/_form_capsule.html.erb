@@ -73,7 +73,6 @@
       <% @capsule.audios.each do |audio| %>
         <div class="audio-container">
           <%= cl_image_tag(audio.key, width: 200, height: 200, crop: :fill) %>
-          <%= @capsule.audios.title %>
         </div>
       <% end %>
     <% else %>
