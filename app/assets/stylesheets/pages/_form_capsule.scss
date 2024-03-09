@@ -1,3 +1,25 @@
+
+.upload-button {
+  background-color: purple; /* Couleur de fond violet */
+  background-image: linear-gradient(to right, purple, #4B0082); /* Dégradé violet */
+  color: white; /* Couleur du texte en blanc */
+  border: none; /* Supprime les bordures */
+  padding: 10px 20px; /* Espacement intérieur */
+  border-radius: 5px; /* Coins arrondis */
+  font-size: 16px; /* Taille de police */
+  cursor: pointer; /* Curseur pointer au survol */
+  transition: background-color 0.3s ease; /* Transition fluide */
+}
+
+.upload-button:hover {
+  background-color: #4c0352; /* Changement de couleur au survol */
+  color: white; /* Couleur du texte en blanc */
+}
+
+.audio-container {
+  
+}
+
 .scrollable-container {
   display: flex;
   overflow-x: auto;
