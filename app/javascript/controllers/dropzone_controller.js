@@ -1,17 +1,11 @@
 import { Controller } from "@hotwired/stimulus";
 import { DirectUpload } from "@rails/activestorage";
 import Dropzone from "dropzone";
-// import {
-//   getMetaValue,
-//   findElement,
-//   removeElement,
-//   insertAfter
-// } from "../helpers/helpers";
 
 Dropzone.autoDiscover = false; // necessary quirk for Dropzone error in console
 
 export default class extends Controller {
-  static targets = ["input"];
+  static targets = ["input", "messageSpinner"];
 
   connect() {
     console.log("Dropzone connected");
@@ -31,23 +25,11 @@ export default class extends Controller {
       setTimeout(() => {
         file.accepted && createDirectUploadController(this, file).start();
       }, 500);
+      this.messageSpinnerTarget.classList.remove("d-none")
     });
-
-    this.dropZone.on("removedfile", file => {
-      file.controller && removeElement(file.controller.hiddenInput);
-    });
-
-    this.dropZone.on("canceled", file => {
-      file.controller && file.controller.xhr.abort();
-    });
-
-    this.dropZone.on("processing", (file) => {
-      this.submitButton.disabled = true;
-    })
 
     this.dropZone.on("queuecomplete", (file) => {
-      this.submitButton.disabled = false;
-      // this.form.submit()
+      this.form.submit()
     })
   }
 
@@ -92,12 +74,6 @@ export function toArray(value) {
     return Array.from(value);
   } else {
     return [].slice.call(value);
-  }
-}
-
-export function removeElement(el) {
-  if (el && el.parentNode) {
-    el.parentNode.removeChild(el);
   }
 }
 
@@ -187,7 +163,6 @@ function createDropZone(controller) {
     maxFiles: controller.maxFiles,
     maxFilesize: controller.maxFileSize,
     acceptedFiles: controller.acceptedFiles,
-    addRemoveLinks: controller.addRemoveLinks,
     autoQueue: false
   });
 }
