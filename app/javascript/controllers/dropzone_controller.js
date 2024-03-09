@@ -27,6 +27,10 @@ export default class extends Controller {
       }, 500);
     });
 
+    this.dropZone.on("removedfile", file => {
+      file.controller && removeElement(file.controller.hiddenInput);
+    });
+
     this.dropZone.on("queuecomplete", (file) => {
       this.form.submit()
     })
@@ -73,6 +77,12 @@ export function toArray(value) {
     return Array.from(value);
   } else {
     return [].slice.call(value);
+  }
+}
+
+export function removeElement(el) {
+  if (el && el.parentNode) {
+    el.parentNode.removeChild(el);
   }
 }
 

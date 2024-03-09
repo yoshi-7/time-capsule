@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["capsule", "tabBtn", "message", "photo", "video", "audio", "toggleIcon"]
+  static targets = ["capsule", "tabBtn", "message", "photo", "video", "audio", "rocketIcon"]
 
   connect() {
     console.log('Toggle controller connected')
