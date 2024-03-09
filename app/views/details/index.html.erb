@@ -20,7 +20,7 @@
                       html5: true,
                       input_html: { data: { controller: "datepicker", 'action': "input->autosave#save"}, value: @capsule.unlock_date } %>
     </div>
-    <%= f.button :submit, class: 'btn btn-black rounded-pill py-4' do %>
+    <%= f.button :submit, 'Lock capsule 4ever', class: 'btn btn-black rounded-pill py-4'do %>
       <div class="d-flex gap-2">
         <span class="material-symbols-outlined">rocket_launch</span>
         Send capsule
