@@ -25,14 +25,12 @@ export default class extends Controller {
     this.messageTargets.forEach(message => {
       message.classList.toggle("d-none")
     })
-    this.toggleIconTarget.style.transform = 'rotate(180deg)'
   }
 
   togglePhotos() {
     this.photoTargets.forEach(photo => {
       photo.classList.toggle("d-none")
     })
-    this.toggleIconTarget.style.transform = 'rotate(180deg)'
   }
 
 
@@ -40,7 +38,6 @@ export default class extends Controller {
     this.videoTargets.forEach(video => {
       video.classList.toggle("d-none")
     })
-    this.toggleIconTarget.style.transform = 'rotate(180deg)'
   }
 
 
@@ -48,6 +45,5 @@ export default class extends Controller {
     this.audioTargets.forEach(audio => {
       audio.classList.toggle("d-none")
     })
-    this.toggleIconTarget.style.transform = 'rotate(180deg)'
   }
 }

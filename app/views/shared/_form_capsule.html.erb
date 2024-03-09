@@ -1,8 +1,7 @@
 <div class="container pt-4" data-controller="autosave">
   <%= link_to capsules_path, class: 'link-underline link-underline-opacity-0 text-black w-auto' do %>
-    <div class="d-flex gap-2 w-auto">
+    <div class="d-flex gap-2 w-auto mb-4">
       <span class="material-symbols-outlined">keyboard_backspace</span>
-      <p>Back</p>
     </div>
   <% end %>
   <%= simple_form_for @capsule, html: { multipart: true, data: { 'autosave-target': 'form' } } do |f| %>
@@ -13,8 +12,8 @@
 
   <div class="d-flex gap-2 align-items-center my-4" data-action="click->toggle#toggleMessages">
     <%= image_tag("icons/saved-text-icon.svg") %>
-    <p class="fs-6 fw-bold m-0 h-auto">Added messages</p>
-    <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
+    <p class="fs-6 fw-bold m-0 h-auto">Added messages ( <%= @capsule.messages.count %> )</p>
+    <span class="material-symbols-outlined toggle-icon" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
   <div class="container mt-2 mb-4 p-0">
     <% @capsule.messages.each do |message| %>
@@ -40,8 +39,8 @@
 
   <div id="photos-display" class="d-flex gap-2 align-items-center mb-4" data-action="click->toggle#togglePhotos">
     <%= image_tag("icons/saved-photo-icon.svg") %>
-    <p class="fs-6 fw-bold m-0 h-auto">Added photos</p>
-    <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
+    <p class="fs-6 fw-bold m-0 h-auto">Added photos ( <%= @capsule.photos.count %> )</p>
+    <span class="material-symbols-outlined text-secondary toggle-icon" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
   <div class="container mt-2 mb-4 p-0" data-toggle-target="photo">
     <% if @capsule.photos.attached? %>
@@ -50,120 +49,108 @@
            <%= image_tag photo, class: 'display-photos'%>
         <% end %>
       </div>
-    <% else %>
-      <p>No photos added yet.</p>
     <% end %>
   </div>
 
   <!-- Toggle audios section -->
 
   <div id="audios-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleAudios">
-    <%= image_tag("icons/audio-icon.svg") %>
-    <p class="fs-6 fw-bold m-0 h-auto">Added Audios</p>
-    <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
+    <%= image_tag("icons/saved-audio-icon.svg") %>
+    <p class="fs-6 fw-bold m-0 h-auto">Added Audios ( <%= @capsule.audios.count %> )</p>
+    <span class="material-symbols-outlined text-secondary toggle-icon" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
-  <div class="container mt-2 mb-4 p-0" data-toggle-target="audio">
+  <div class="container mt-2 mb-4 p-0">
     <% if @capsule.audios.attached? %>
       <% @capsule.audios.each do |audio| %>
-        <div class="audio-container">
+        <div class="audio-container" data-toggle-target="audio">
           <%= cl_image_tag(audio.key, width: 200, height: 200, crop: :fill) %>
           <%= @capsule.audios.title %>
         </div>
       <% end %>
-    <% else %>
-      <p>No Audio added yet.</p>
     <% end %>
   </div>
 
-<!-- Toggle Videos section -->
+  <!-- Toggle Videos section -->
 
-<div id="photos-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleVideos">
-  <%= image_tag("icons/saved-record-icon.svg") %>
-  <p class="fs-6 fw-bold m-0 h-auto">Added videos</p>
-  <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
-</div>
-<div class="container mt-2 mb-4 p-0" data-toggle-target="video">
-  <% if @capsule.videos.attached? %>
-    <div class="scrollable-container">
-      <% @capsule.videos.each do |photo| %>
-        <div class="photo-container">
-          <%= cl_video_tag(video)  %>
-        </div>
-      <% end %>
-    </div>
-  <% else %>
-    <p>No videos added yet.</p>
-  <% end %>
-</div>
+  <div id="photos-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleVideos">
+    <%= image_tag("icons/saved-record-icon.svg") %>
+    <p class="fs-6 fw-bold m-0 h-auto">Added videos ( <%= @capsule.videos.count %> )</p>
+    <span class="material-symbols-outlined text-secondary toggle-icon" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
+  </div>
+  <div class="container mt-2 mb-4 p-0" data-toggle-target="video">
+    <% if @capsule.videos.attached? %>
+      <div class="scrollable-container">
+        <% @capsule.videos.each do |photo| %>
+          <div class="photo-container">
+            <%= cl_video_tag(video)  %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <!-- EDIT ZONE-->
 
-  <h4 class="fw-bold mt-4 mb-3 border-bottom border-light-gray py-2">Add new content to your capsule</h4>
+  <h4 class="fw-bold mb-1 mt-4">Add new content to your capsule</h4>
+  <hr class="mb-4">
 
   <!-- Add Message -->
 
-  <%= link_to new_capsule_message_path(@capsule), data: { 'toggle-target': 'capsuleInput' }, class: 'link-underline link-underline-opacity-0  p-3' do %>
+  <%= link_to new_capsule_message_path(@capsule), data: { 'toggle-target': 'capsuleInput' }, class: 'link-underline link-underline-opacity-0 mb-1' do %>
     <div class="d-flex gap-2 align-items-center">
       <%= image_tag("icons/text-icon.svg") %>
       <p class="fs-6 fw-bold m-0 h-auto text-black">Message<p>
     </div>
   <% end %>
 
-<!-- Photos upload -->
+  <!-- Photos upload -->
 
-<!-- Test autosave sur ce form uniquement -->
+  <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post do |f| %>
 
-<%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post do |f| %>
-
-  <div class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="100">
-    <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', 'action': 'change->autosave#save', direct_upload_url: rails_direct_uploads_url } } %>
-    <div class="dropzone-msg dz-message needsclick text-gray-600">
-      <div class="d-flex gap-2 align-items-center">
-        <%= image_tag("icons/photo-icon.svg") %>
-        <p class="fs-6 fw-bold m-0 h-auto">Photo<p>
-        <div class="spinner d-none" data-dropzone-target="messageSpinner">
-          <span class="spinner-inner-1"></span>
-          <span class="spinner-inner-2"></span>
-          <span class="spinner-inner-3"></span>
-        </div>
+    <div class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="100">
+      <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', 'action': 'change->autosave#save', direct_upload_url: rails_direct_uploads_url } } %>
+      <div class="dropzone-msg dz-message needsclick text-gray-600">
+        <div class="d-flex gap-2 align-items-center">
+          <%= image_tag("icons/photo-icon.svg") %>
+          <p class="fs-6 fw-bold m-0 h-auto">Photo<p>
+          </div>
         </div>
       </div>
-    </div>
-  <%= f.button :submit, "Upload my photos", class: "d-none" %>
-<% end %>
+    <%= f.button :submit, "Upload my photos", class: "d-none" %>
+  <% end %>
 
-<!-- Videos upload -->
+  <!-- Videos upload -->
 
-<%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
-  <div class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="10">
-    <%= f.input :videos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
-    <div class="dropzone-msg dz-message needsclick text-gray-600">
-      <div class="d-flex gap-2 align-items-center">
-        <%= image_tag("icons/record-icon.svg") %>
-        <p class="fs-6 fw-bold m-0 h-auto">Video<p>
+  <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
+    <div class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="10">
+      <%= f.input :videos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <div class="dropzone-msg dz-message needsclick text-gray-600">
+        <div class="d-flex gap-2 align-items-center">
+          <%= image_tag("icons/record-icon.svg") %>
+          <p class="fs-6 fw-bold m-0 h-auto">Video<p>
+          </div>
         </div>
       </div>
-    </div>
-  <%= f.button :submit, "Upload my videos", class: "d-none" %>
-<% end %>
+    <%= f.button :submit, "Upload my videos", class: "d-none" %>
+  <% end %>
 
-<!-- Audios upload -->
+  <!-- Audios upload -->
 
-<%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
-  <div class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="10">
-    <%= f.input :audios, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
-    <div class="dropzone-msg dz-message needsclick text-gray-600">
-      <div class="d-flex gap-2 align-items-center">
-        <%= image_tag("icons/audio-icon.svg") %>
-        <p class="fs-6 fw-bold m-0 h-auto">Audio<p>
-        </div>
+  <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post, remote: true do |f| %>
+    <div class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="10">
+      <%= f.input :audios, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <div class="dropzone-msg dz-message needsclick text-gray-600">
+        <div class="d-flex gap-2 align-items-center">
+          <%= image_tag("icons/audio-icon.svg") %>
+          <p class="fs-6 fw-bold m-0 h-auto">Audio<p>
+          </div>
+      </div>
     </div>
+    <%= f.button :submit, "Upload my audios", class: "d-none"%>
+  <% end %>
+
+  <div class="d-flex justify-content-center w-100 my-4">
+    <%= link_to 'Next', capsule_details_path(@capsule), class: 'btn btn-dark rounded-pill px-4' %>
   </div>
-  <%= f.button :submit, "Upload my audios", class: "d-none"%>
-<% end %>
-
-<div class="d-flex justify-content-end w-100 mt-auto">
-  <%= link_to 'Next', capsule_details_path(@capsule), class: 'btn fw-bold border-bottom border-light-gray rounded-0' %>
-</div>
 
 </div>

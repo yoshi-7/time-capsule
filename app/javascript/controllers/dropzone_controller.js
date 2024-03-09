@@ -25,7 +25,6 @@ export default class extends Controller {
       setTimeout(() => {
         file.accepted && createDirectUploadController(this, file).start();
       }, 500);
-      this.messageSpinnerTarget.classList.remove("d-none")
     });
 
     this.dropZone.on("queuecomplete", (file) => {
