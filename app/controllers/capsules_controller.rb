@@ -9,6 +9,8 @@ before_action :set_capsule, only: [:edit, :update, :destroy]
 
   def show
     @capsule = Capsule.find(params[:id])
+    user_capsule_ids = UserCapsule.where(capsule: @capsule).pluck(:user_id)
+    @users = User.where(id: user_capsule_ids)
   end
 
   def new
