@@ -49,7 +49,7 @@
     <div class="scrollable-container">
       <% @capsule.photos.each do |photo| %>
         <div class="photo-container">
-          <%= cl_image_tag(photo.key, width: 200, height: 200, crop: :fill) %>
+          <%= cl_image_tag(photo.key, width: 100, height: 100, crop: :fill) %>
         </div>
       <% end %>
     </div>
@@ -58,6 +58,27 @@
   <% end %>
 </div>
 
+<!-- Toggle Videos section -->
+<!-- Penser à créer la fonctions toggle videos  -->
+
+<div id="photos-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#togglePhotos">
+  <%= image_tag("icons/saved-record-icon.svg") %>
+  <p class="fs-6 fw-bold m-0 h-auto">Added videos</p>
+  <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
+</div>
+<div class="container mt-2 mb-4 p-0" data-toggle-target="videos">
+  <% if @capsule.photos.attached? %>
+    <div class="scrollable-container">
+      <% @capsule.photos.each do |photo| %>
+        <div class="photo-container">
+          <%= cl_image_tag(photo.key, width: 100, height: 100, crop: :fill) %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No videos added yet.</p>
+  <% end %>
+</div>
 
 <!-- EDIT ZONE-->
   <h6 class="fw-bold mt-4 mb-3">Add new content to your capsule</h6>

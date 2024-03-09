@@ -1,29 +1,32 @@
 .scrollable-container {
   display: flex;
   overflow-x: auto;
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #888 #e0e0e0; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: thin;
+  scrollbar-color: #888 #e0e0e0;
+  -ms-overflow-style: none;
 }
 
 .scrollable-container::-webkit-scrollbar {
-  height: 8px; /* Height of the scrollbar */
+  height: 8px;
 }
 
 .scrollable-container::-webkit-scrollbar-track {
-  background: #e0e0e0; /* Color of the tracking area */
+  background: #e0e0e0;
 }
 
 .scrollable-container::-webkit-scrollbar-thumb {
-  background-color: #888; /* Color of the scroll thumb */
-  border-radius: 20px; /* Roundness of the scroll thumb */
+  background-color: #888;
+  border-radius: 20px;
 }
 
 .photo-container {
-  flex: none; /* Prevent photos from growing or shrinking */
-  margin-right: 16px; /* Adjust space between photos */
+  flex: none;
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .photo-container:last-child {
-  margin-right: 0; /* Remove margin for the last photo */
+  margin-right: 0;
 }
