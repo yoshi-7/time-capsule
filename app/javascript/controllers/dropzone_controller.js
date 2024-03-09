@@ -47,7 +47,7 @@ export default class extends Controller {
 
     this.dropZone.on("queuecomplete", (file) => {
       this.submitButton.disabled = false;
-      // this.form.submit()
+      this.form.submit()
     })
   }
 

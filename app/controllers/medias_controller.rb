@@ -5,6 +5,6 @@ class MediasController < ApplicationController
     @capsule.videos.attach(params[:capsule][:videos])
     @capsule.audios.attach(params[:capsule][:audios])
     @capsule.save
-    render 'capsules/edit'
+    redirect_to edit_capsule_path(@capsule)
   end
 end
