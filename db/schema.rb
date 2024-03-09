@@ -50,7 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_24_134841) do
     t.string "status", default: "draft"
     t.string "name"
     t.date "unlock_date"
-    t.string "recipient_email"
     t.index ["user_id"], name: "index_capsules_on_user_id"
   end
 

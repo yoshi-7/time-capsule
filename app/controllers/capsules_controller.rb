@@ -3,11 +3,14 @@ class CapsulesController < ApplicationController
 before_action :set_capsule, only: [:edit, :update, :destroy]
 
   def index
-    @capsules = Capsule.where(user: current_user)
+    user_capsule_ids = UserCapsule.where(user: current_user).pluck(:capsule_id)
+    @capsules = Capsule.where(user: current_user).or(Capsule.where(id: user_capsule_ids))
   end
 
   def show
     @capsule = Capsule.find(params[:id])
+    user_capsule_ids = UserCapsule.where(capsule: @capsule).pluck(:user_id)
+    @users = User.where(id: user_capsule_ids)
   end
 
   def new

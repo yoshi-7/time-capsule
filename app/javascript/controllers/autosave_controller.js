@@ -9,12 +9,12 @@ export default class extends Controller {
   }
 
   save() {
-    this.formTarget.submit()
-    // const form = this.formTarget
-    // const formData = new FormData(form)
-    // fetch(form.action, {
-    //   method: form.method,
-    //   body: formData
-    // })
+    // this.formTarget.submit()
+    const form = this.formTarget
+    const formData = new FormData(form)
+    fetch(form.action, {
+      method: form.method,
+      body: formData
+    })
   }
 }

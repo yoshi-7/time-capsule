@@ -1,69 +1,58 @@
-<div class="background-show m-0 pt-5">
-  <div class="container d-flex flex-column mt-3 mb-3 ">
-    <div class="container title text-center mb-3 mt-5 bg-light rounded">
-      <h1 class="text-dark-blue"> 🔮 Your capsule 🕰️ traveled through time to get pass to you! </h1>
-    </div>
-    
-    <div class="capsule container d-flex flex-column border-bottom border-light-gray mt-3">
-      <h4 class="text-white"> 💊 <strong> <%= @capsule.name %> 💊 </strong> </h4>
-      <p class="text-white">Sent by <strong> <%= @capsule.user.name %> </strong> on <%= @capsule.created_at.strftime("%d/%m/%Y") %></p>
-    </div>
-
-    <div class="recipient-users-avatar container bg-light rounded mt-3 mb-3">
-      <p> 👥 Your capsule was sent to: </p>
-      <div class="d-flex flex-wrap">
-        <% @capsule.user_capsules.each do |user_capsule| %>
-          <div class="avatar-wrapper d-flex flex-column align-items-center">
-            <img src="<%= user_capsule.avatar %>" class="img-fluid rounded-circle mb-1" style="width: 50px; height: 50px;">
-            <p class="text-center mb-0"><%= user_capsule.name %></p>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-
-    <div class="messages container bg-light border-bottom border-light-gray rounded d-flex flex-column border-bottom border-light-gray mt-3" style="background-color: light-grey; border-radius=5px;">
-      <% if @capsule.messages.present? %>
-        <h4> 📜 Your capsule contains <strong> <%= @capsule.messages.length %> messages: </strong></h4>
-        <% @capsule.messages.each do |message| %>
-          <li class="message-list d-flex flex-column border-bottom border-light-gray mb-2 p-2">
-            <strong> ✒️<%= message.title  %></strong>
-            <em> <%= message.content %></em>
-          </li>
-        
-        <% end %>
-      <% else %> 
+<div class="m-4">
+  <%= link_to capsules_path, class: 'link-underline link-underline-opacity-0 text-black w-auto' do %>
+    <span class="material-symbols-outlined mb-4">keyboard_backspace</span>
+  <% end %>
+  <h1 class="text-black text-start fs-2"><%= @capsule.name %></h1>
+  <p class="text-secondary fs-6">Send by <%= @capsule.user.first_name %> on <%= @capsule.encapsulation_date.strftime("%d/%m/%Y") %></p>
+  <div class="d-flex mb-4 ps-1">
+    <% @users.each do |user| %>
+      <% if user.avatar.attached? %>
+        <%= image_tag(user.avatar, class: "avatar-show") %>
+      <% else %>
+        <% colors = ["text-bg-primary", "text-bg-danger", "text-bg-warning", "text-bg-dark", "text-bg-info"] %>
+        <div class="avatar <%= colors.sample%> d-flex align-items-center justify-content-center">
+          <span class="text-light"><%= current_user.first_name[0]%></span>
+        </div>
       <% end %>
-    </div>
-
-    <div class="photos container bg-light rounded d-flex flex-column border-bottom border-light-gray mt-3 mb-3">
-      <p> 📷 Your capsule contains <%= @capsule.photos.length %> pictures: </p>
-      <% @capsule.photos.each do |photo| %>
-        <li>
-          <p> <%= photos.content %></p>
-        </li>
-      <% end %>
-    </div>
-
-    <div class="videos container bg-light rounded d-flex flex-column border-bottom border-light-gray mt-3 mb-3">
-      <p> 📼 Your capsule contains <%= @capsule.videos.length %> videos: </p>
-      <%@capsule.videos.each do |video| %>
-        <li>
-          <p> <%= videos.content %></p>
-        </li>
-      <% end %>
-    </div>
-
-    <div class="audios container bg-light rounded d-flex flex-column border-top border-light-gray border-bottom mt-3 mb-3">
-      <p> 🎤 Your capsule contains <%= @capsule.audios.length %> voice recordings: </p>
-      <%@capsule.audios.each do |audio| %>
-        <li>
-          <p> <%= audios.content %></p>
-        </li>
-      <% end %>
-    </div>
-
-    <button class="btn btn-primary text-white m-5 border-top border-light-gray"> 🕰️ Save it for eternity 💎 </button>
-
+    <% end %>
   </div>
+  <% if @capsule.messages.count > 0 %>
+    <h2 class="text-black fs-5 text-start mb-2">Messages</h2>
+    <hr>
+    <div class="mt-2 mb-4 p-0">
+      <% @capsule.messages.each do |message| %>
+        <div>
+          <p class="fw-bold text-black mb-1"><%= message.title %></p>
+          <p><%= message.content %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @capsule.audios.count > 0 %>
+    <h2 class="text-black fs-5 text-start">Audio messages</h2>
+    <hr>
+    <div class="mt-2 mb-4 p-0">
+      <% @capsule.audios.each do |audio| %>
+        <audio controls>
+          <source src="<%= rails_blob_url(audio) %>" type="audio/mpeg" class="mb-1"/>
+        </audio>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @capsule.photos.count > 0 %>
+    <h2 class="text-black fs-5 text-start">Photos</h2>
+    <div class="d-flex border border-light-gray mt-2 mb-4 p-0 overflow-scroll p-2 pe-0 rounded-1">
+      <% @capsule.photos.each do |photo| %>
+        <%= image_tag photo, class: 'display-photos'%>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @capsule.videos.count %>
+    <h2 class="text-black fs-5 text-start">Video record</h2>
+    <div class="mt-2 mb-4 p-0">
+      <% @capsule.videos.each do |video| %>
+        <%= video_tag url_for(video), controls: true %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
