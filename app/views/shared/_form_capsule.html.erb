@@ -44,7 +44,7 @@
   <p class="fs-6 fw-bold m-0 h-auto">Added photos</p>
   <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
 </div>
-<div class="container mt-2 mb-4 p-0" data-toggle-target="photos">
+<div class="container mt-2 mb-4 p-0" data-toggle-target="photo">
   <% if @capsule.photos.attached? %>
     <div class="scrollable-container">
       <% @capsule.photos.each do |photo| %>
@@ -61,12 +61,12 @@
 <!-- Toggle Videos section -->
 <!-- Penser à créer la fonctions toggle videos  -->
 
-<div id="photos-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#togglePhotos">
+<div id="photos-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleVideos">
   <%= image_tag("icons/saved-record-icon.svg") %>
   <p class="fs-6 fw-bold m-0 h-auto">Added videos</p>
   <span class="material-symbols-outlined text-secondary" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
 </div>
-<div class="container mt-2 mb-4 p-0" data-toggle-target="videos">
+<div class="container mt-2 mb-4 p-0" data-toggle-target="video">
   <% if @capsule.photos.attached? %>
     <div class="scrollable-container">
       <% @capsule.photos.each do |photo| %>
@@ -96,7 +96,7 @@
 <!-- Test autosave sur ce form uniquement -->
 
 <%= simple_form_for @capsule, html: {data: { 'autosave-target': 'form' }}, url: capsule_medias_path(@capsule), method: :post do |f| %>
-  <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10">
+  <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="100">
     <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', 'action': 'change->autosave#save', direct_upload_url: rails_direct_uploads_url } } %>
     <div class="dropzone-msg dz-message needsclick text-gray-600">
       <div class="d-flex gap-2 align-items-center">
