@@ -5,7 +5,6 @@
   transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out; // Smooth transition for visual feedback.
   &:hover, &.dz-drag-hover {
 
-
   .dropzone-msg-title {
     font-size: 1rem;
     font-family: $body-font;
@@ -27,7 +26,6 @@
 
 @use "sass:math";
 
-
 @keyframes passing-through {
   0% {
     opacity: 0;
@@ -45,7 +43,6 @@
   }
 }
 
-
 @keyframes slide-in {
   0% {
     opacity: 0;
@@ -57,15 +54,11 @@
   }
 }
 
-
-
 @keyframes pulse {
   0% { transform: scale(1); }
   10% { transform: scale(1.1); }
   20% { transform: scale(1); }
 }
-
-
 
 .dropzone, .dropzone * {
   box-sizing: border-box;
@@ -73,7 +66,6 @@
 .dropzone {
 
   $image-size: 100px;
-
   $image-border-radius: 20px;
 
   &.dz-clickable {
@@ -89,14 +81,6 @@
     }
   }
 
-  min-height: 40px;
-
-  &.dz-started {
-    .dz-message {
-      display: none;
-    }
-  }
-
   &.dz-drag-hover {
     border-style: solid;
     .dz-message {
@@ -105,7 +89,7 @@
   }
   .dz-message {
     text-align: center;
-    margin: 3em 0;
+    margin: 0;
 
     .dz-button {
       background: none;
@@ -118,15 +102,13 @@
     }
   }
 
-
-
   .dz-preview {
     position: relative;
     display: inline-block;
 
     vertical-align: top;
-
-    margin: 16px;
+    margin-top: 16px;
+    margin-right: 16px;
     min-height: 40px;
 
     &:hover {
@@ -249,7 +231,6 @@
       }
     }
 
-
     &.dz-success {
       .dz-success-mark {
         animation: passing-through 3s cubic-bezier(0.770, 0.000, 0.175, 1.000);
@@ -262,10 +243,8 @@
       }
     }
 
-
     $overlay-color: white;
     $overlay-bg-color: rgba(0, 0, 0, 0.8);
-
 
     .dz-success-mark, .dz-error-mark {
 
@@ -295,7 +274,6 @@
         fill: $overlay-color;
       }
     }
-
 
     &.dz-processing .dz-progress {
       opacity: 1;

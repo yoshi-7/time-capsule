@@ -1,10 +1,14 @@
 <div class="container p-4">
-  <%= link_to 'Back', edit_capsule_path(@capsule) %>
+  <%= link_to edit_capsule_path(@capsule), class: 'link-underline link-underline-opacity-0 text-black w-auto' do %>
+    <div class="d-flex gap-2 w-auto mb-4">
+      <span class="material-symbols-outlined">keyboard_backspace</span>
+    </div>
+  <% end %>
   <%= simple_form_for([@capsule, @message]) do |f| %>
     <%= f.input :title, input_html: { placeholder: 'Message title here' } %>
     <%= f.input :content, label: 'Message', class: 'fw-bold', input_html: { placeholder: 'Type tour message here' } %>
-    <div class="d-flex w-100 justify-content-end">
-      <%= f.button :submit, 'Validate', class:'fw-bold border-bottom border-light-gray rounded-0' %>
+    <div class="d-flex justify-content-center w-100 my-4">
+      <%= f.button :submit, 'Validate', class:'btn btn-dark rounded-pill px-4' %>
     </div>
   <% end %>
 </div>

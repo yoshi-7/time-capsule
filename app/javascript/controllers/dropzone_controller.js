@@ -25,7 +25,10 @@ export default class extends Controller {
       setTimeout(() => {
         file.accepted && createDirectUploadController(this, file).start();
       }, 500);
-      this.messageSpinnerTarget.classList.remove("d-none")
+    });
+
+    this.dropZone.on("removedfile", file => {
+      file.controller && removeElement(file.controller.hiddenInput);
     });
 
     this.dropZone.on("queuecomplete", (file) => {
@@ -74,6 +77,12 @@ export function toArray(value) {
     return Array.from(value);
   } else {
     return [].slice.call(value);
+  }
+}
+
+export function removeElement(el) {
+  if (el && el.parentNode) {
+    el.parentNode.removeChild(el);
   }
 }
 
