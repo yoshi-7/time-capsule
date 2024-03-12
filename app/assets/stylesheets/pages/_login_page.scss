@@ -71,6 +71,12 @@ h1, h2, h3 {
 
 // <!-- Home Page -->
 
+.image-capsule {
+  max-width: 30%;
+  height: auto;
+  text-align: center
+}
+
 h2 {
   margin: 16px;
   font-size: 24px;
@@ -85,8 +91,14 @@ h2 {
   height: 800px;
 }
 
-.video-size {
-  width: 300px;
+.video-container {
+  display: flex;
+  justify-content: center;
+
+  video {
+    width: 50%;
+    border-radius: 10px;
+  }
 }
 
 .link-card {
