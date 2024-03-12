@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
-
-  devise_scope :user do
-    root to: 'devise/sessions#new'
-  end
+  devise_for :users 
+  
+  root to: "pages#home"
 
   resources :capsules do
-    resources :confirmations, only: [:index]
     resources :details, only: [:index]
     resources :medias, only: [:create]
     resources :messages, only: [:new, :create, :edit, :update, :destroy]
