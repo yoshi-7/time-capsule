@@ -16,10 +16,6 @@
   color: white; /* Couleur du texte en blanc */
 }
 
-.audio-container {
-  
-}
-
 .scrollable-container {
   display: flex;
   overflow-x: auto;
@@ -51,4 +47,11 @@
 
 .photo-container:last-child {
   margin-right: 0;
+}
+
+.capsule-name {
+  border-radius: 0px;
+  border: none;
+  border-bottom: solid 1px $light-gray;
+  padding: 8px 0;
 }
