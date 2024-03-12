@@ -11,7 +11,7 @@
   <!-- Toggle message section -->
 
   <div class="d-flex gap-2 align-items-center my-4" data-action="click->toggle#toggleMessages">
-    <%= image_tag("icons/saved-text-icon.svg") %>
+    <%= image_tag("myicons/saved-text-icon.svg") %>
     <p class="fs-6 fw-bold m-0 h-auto">Added messages ( <%= @capsule.messages.count %> )</p>
     <span class="material-symbols-outlined toggle-icon" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
@@ -38,7 +38,7 @@
   <!-- Toggle photos section -->
 
   <div id="photos-display" class="d-flex gap-2 align-items-center mb-4" data-action="click->toggle#togglePhotos">
-    <%= image_tag("icons/saved-photo-icon.svg") %>
+    <%= image_tag("myicons/saved-photo-icon.svg") %>
     <p class="fs-6 fw-bold m-0 h-auto">Added photos ( <%= @capsule.photos.count %> )</p>
     <span class="material-symbols-outlined text-secondary toggle-icon" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
@@ -55,7 +55,7 @@
   <!-- Toggle audios section -->
 
   <div id="audios-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleAudios">
-    <%= image_tag("icons/saved-audio-icon.svg") %>
+    <%= image_tag("myicons/saved-audio-icon.svg") %>
     <p class="fs-6 fw-bold m-0 h-auto">Added Audios ( <%= @capsule.audios.count %> )</p>
     <span class="material-symbols-outlined text-secondary toggle-icon" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
@@ -73,7 +73,7 @@
   <!-- Toggle Videos section -->
 
   <div id="photos-display" class="d-flex gap-2 align-items-center" data-action="click->toggle#toggleVideos">
-    <%= image_tag("icons/saved-record-icon.svg") %>
+    <%= image_tag("myicons/saved-record-icon.svg") %>
     <p class="fs-6 fw-bold m-0 h-auto">Added videos ( <%= @capsule.videos.count %> )</p>
     <span class="material-symbols-outlined text-secondary toggle-icon" data-toggle-target="toggleIcon">arrow_drop_down_circle</span>
   </div>
@@ -98,7 +98,7 @@
 
   <%= link_to new_capsule_message_path(@capsule), data: { 'toggle-target': 'capsuleInput' }, class: 'link-underline link-underline-opacity-0 mb-1' do %>
     <div class="d-flex gap-2 align-items-center">
-      <%= image_tag("icons/text-icon.svg") %>
+      <%= image_tag("myicons/text-icon.svg") %>
       <p class="fs-6 fw-bold m-0 h-auto text-black">Message<p>
     </div>
   <% end %>
@@ -111,7 +111,7 @@
       <%= f.input :photos, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
-          <%= image_tag("icons/photo-icon.svg") %>
+          <%= image_tag("myicons/photo-icon.svg") %>
           <p class="fs-6 fw-bold m-0 h-auto">Photo<p>
           </div>
         </div>
@@ -126,7 +126,7 @@
       <%= f.input :videos, as: :file, label: false, accept: 'video/*', input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
-          <%= image_tag("icons/record-icon.svg") %>
+          <%= image_tag("myicons/record-icon.svg") %>
           <p class="fs-6 fw-bold m-0 h-auto">Video<p>
           </div>
         </div>
@@ -141,7 +141,7 @@
       <%= f.input :audios, as: :file, label: false, input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
-          <%= image_tag("icons/audio-icon.svg") %>
+          <%= image_tag("myicons/audio-icon.svg") %>
           <p class="fs-6 fw-bold m-0 h-auto">Audio<p>
           </div>
       </div>
