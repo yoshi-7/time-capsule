@@ -64,7 +64,6 @@
       <% @capsule.audios.each do |audio| %>
         <div class="audio-container" data-toggle-target="audio">
           <%= cl_image_tag(audio.key, width: 200, height: 200, crop: :fill) %>
-          <%= @capsule.audios.title %>
         </div>
       <% end %>
     <% end %>
