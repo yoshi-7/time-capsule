@@ -37,21 +37,15 @@
   border-radius: 20px;
 }
 
-.photo-container {
-  flex: none;
-  margin-right: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.photo-container:last-child {
-  margin-right: 0;
-}
-
 .capsule-name {
   border-radius: 0px;
   border: none;
   border-bottom: solid 1px $light-gray;
   padding: 8px 0;
+}
+
+.video-tag {
+  max-height: 128px;
+  border-radius: 4px;
+  margin-right: 8px;
 }

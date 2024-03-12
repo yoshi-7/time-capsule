@@ -33,9 +33,7 @@
     <hr>
     <div class="mt-2 mb-4 p-0">
       <% @capsule.audios.each do |audio| %>
-        <audio controls>
-          <source src="<%= rails_blob_url(audio) %>" type="audio/mpeg" class="mb-1"/>
-        </audio>
+        <%= audio_tag url_for(audio), controls: true %>
       <% end %>
     </div>
   <% end %>
@@ -47,7 +45,7 @@
       <% end %>
     </div>
   <% end %>
-  <% if @capsule.videos.count %>
+  <% if @capsule.videos.count > 0 %>
     <h2 class="text-black fs-5 text-start">Video record</h2>
     <div class="mt-2 mb-4 p-0">
       <% @capsule.videos.each do |video| %>
@@ -56,4 +54,3 @@
     </div>
   <% end %>
 </div>
-
