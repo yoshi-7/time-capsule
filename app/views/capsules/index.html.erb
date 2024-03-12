@@ -1,17 +1,26 @@
 <div data-controller="toggle">
   <div class="container p-0">
     <%= render "shared/navbar" %>
+    <% if (@capsules.select { |capsule| capsule.status == 'draft' }).count > 0 %>
+      <div class="container capsules-container m-0 p-0" data-toggle-target="capsule">
+        <h2 class="fw-black ps-4 text-start text-black fs-5 mb-0 mt-4">Drafts</h2>
+        <% @capsules.each do |capsule| %>
+          <% if capsule.status == "draft" %>
+            <div data-toggle-target="capsule">
+              <%= render partial: "capsules/draft_capsule", locals: { capsule: capsule } %>
+            </div>
+          <% end %>
+        <% end %>
+    <% end %>
+    </div>
     <div class="container capsules-container m-0 p-0">
+      <h2 class="ps-4 fw-bold text-start text-black fs-5 mt-4 mb-0" data-toggle-target="capsule">Locked capsules</h2>
       <% @capsules.each do |capsule| %>
-        <% if capsule.status == "draft" %>
-          <div data-toggle-target="capsule">
-            <%= render partial: "capsules/draft_capsule", locals: { capsule: capsule } %>
-          </div>
-        <% elsif capsule.status == 'unlocked' %>
+        <% if capsule.status == "unlocked" %>
           <div data-toggle-target="capsule" class="d-none">
             <%= render partial: "capsules/unlocked_capsule", locals: { capsule: capsule } %>
           </div>
-        <% else %>
+        <% elsif capsule.status == "locked" %>
           <div data-toggle-target="capsule">
             <%= render partial: "capsules/locked_capsule", locals: { capsule: capsule } %>
           </div>

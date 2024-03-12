@@ -1,0 +1,7 @@
+ # config/meta.yml
+ meta_product_name: "Time Capsule"
+ meta_title: "Time Capsule - A Journey Through Time for the Future You"
+ meta_description: "In a rapidly evolving world, preserving today's personal experiences for future self-reflection is a challenge.
+Time Encapsule provides a solution for encapsulating current memories and dreams in personalized capsules, to be unveiled years down the line.
+Echoing Voyager's Golden Record, our capsules offer a personal journey through time, bridging generations."
+ meta_image: "cover.png" # should exist in `app/assets/images/`
