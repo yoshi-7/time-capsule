@@ -72,9 +72,10 @@ h1, h2, h3 {
 // <!-- Home Page -->
 
 .image-capsule {
-  max-width: 30%;
+  max-width: 25%;
   height: auto;
-  text-align: center
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 h2 {
@@ -109,7 +110,7 @@ h2 {
   height: 60px;
   margin: 24px;
   font-size: 16px;
-  color: rgb(197, 149, 255);
+  color: white;
   background: linear-gradient(0.25turn, #8c3fa6, #ebf8e1, #300569);
   border-radius: 24px;
 
