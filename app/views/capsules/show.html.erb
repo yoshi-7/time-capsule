@@ -17,7 +17,7 @@
     <% end %>
   </div>
   <% if @capsule.messages.count > 0 %>
-    <h2 class="text-black fs-5 text-start mb-2">Messages</h2>
+    <h2 class="text-black fs-5 text-start ms-0 mb-2">Messages</h2>
     <hr>
     <div class="mt-2 mb-4 p-0">
       <% @capsule.messages.each do |message| %>
@@ -29,7 +29,7 @@
     </div>
   <% end %>
   <% if @capsule.audios.count > 0 %>
-    <h2 class="text-black fs-5 text-start">Audio messages</h2>
+    <h2 class="text-black fs-5 ms-0 text-start">Audio messages</h2>
     <hr>
     <div class="mt-2 mb-4 p-0">
       <% @capsule.audios.each do |audio| %>
@@ -38,15 +38,15 @@
     </div>
   <% end %>
   <% if @capsule.photos.count > 0 %>
-    <h2 class="text-black fs-5 text-start">Photos</h2>
-    <div class="d-flex border border-light-gray mt-2 mb-4 p-0 overflow-scroll p-2 pe-0 rounded-1">
+    <h2 class="text-black fs-5 ms-0 text-start">Photos</h2>
+    <div class="d-flex border border-light-gray mt-2 mb-4 p-0 overflow-scroll p-2 pe-0 rounded-1", data-controller="fullscreen-img">
       <% @capsule.photos.each do |photo| %>
-        <%= image_tag photo, class: 'display-photos'%>
+        <%= image_tag photo, class: 'display-photos', 'data-fullscreen-img-target': 'img', 'data-action': 'click->fullscreen-img#fullscreen' %>
       <% end %>
     </div>
   <% end %>
   <% if @capsule.videos.count > 0 %>
-    <h2 class="text-black fs-5 text-start">Video record</h2>
+    <h2 class="text-black fs-5 ms-0 text-start">Video record</h2>
     <div class="mt-2 mb-4 p-0">
       <% @capsule.videos.each do |video| %>
         <%= video_tag url_for(video), controls: true %>

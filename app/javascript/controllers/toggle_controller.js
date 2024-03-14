@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   toggleNavTab() {
-    console.log(this.capsuleTargets)
     this.capsuleTargets.forEach(target => {
       target.classList.toggle("d-none")
     })
