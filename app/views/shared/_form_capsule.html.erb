@@ -88,7 +88,7 @@
 
   <!-- EDIT ZONE-->
 
-  <h4 class="fw-bold mb-1 mt-4">Add new content to your capsule</h4>
+  <h4 class="fw-bold mb-1 mt-4">Add content to your capsule</h4>
   <hr class="mb-4">
 
   <!-- Add Message -->
@@ -96,7 +96,7 @@
   <%= link_to new_capsule_message_path(@capsule), data: { 'toggle-target': 'capsuleInput' }, class: 'link-underline link-underline-opacity-0 mb-1' do %>
     <div class="d-flex mb-4 gap-2 align-items-center">
       <%= image_tag("myicons/text-icon.svg") %>
-      <p class="fs-6 fw-bold m-0 h-auto text-black">Message<p>
+      <p class="fs-6 fw-bold m-0 h-auto text-black">New message<p>
     </div>
   <% end %>
 
@@ -109,7 +109,7 @@
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
           <%= image_tag("myicons/photo-icon.svg") %>
-          <p class="fs-6 fw-bold m-0 h-auto">Photo<p>
+          <p class="fs-6 fw-bold m-0 h-auto">New photo<p>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
           <%= image_tag("myicons/record-icon.svg") %>
-          <p class="fs-6 fw-bold m-0 h-auto">Video<p>
+          <p class="fs-6 fw-bold m-0 h-auto">New video<p>
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@
       <div class="dropzone-msg dz-message needsclick text-gray-600">
         <div class="d-flex gap-2 align-items-center">
           <%= image_tag("myicons/audio-icon.svg") %>
-          <p class="fs-6 fw-bold m-0 h-auto">Audio<p>
+          <p class="fs-6 fw-bold m-0 h-auto">New audio recording<p>
           </div>
       </div>
     </div>
