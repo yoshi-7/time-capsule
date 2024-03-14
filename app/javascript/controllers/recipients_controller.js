@@ -19,8 +19,8 @@ export default class extends Controller {
     if (isEmailValid) {
       count += 1
       const element = `
-      <div class='d-flex gap-2'>
-        <p>${email}</p>
+      <div class='d-flex align-items-center py-1 px-3 gap-2 bg-brand rounded-pill'>
+        <p class="mb-0">${email}</p>
         <span class="material-symbols-outlined" data-action="click->recipients#delete">close</span>
         <input type="hidden" name="confirmation[email-${count}]" value="${email}">
       </div>`;

@@ -12,7 +12,7 @@
       <% end %>
       <div>
         <h1 class="fs-6 text-secondary text-start w-100 mb-0">Welcome back</h1>
-        <h2 class="fw-black fs-3 text-black text-start w-100 mb-0"><%= current_user.first_name %></h2>
+        <h2 class="p-0 fw-black fs-3 text-black text-start w-100 mt-1 m-0"><%= current_user.first_name %></h2>
       </div>
     </div>
     <%= button_to destroy_user_session_path, class: 'btn p-0', method: :delete  do %>
