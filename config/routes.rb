@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   devise_for :users
+  get "/home", to: "pages#home", as: :home
 
   devise_scope :user do
     # root to: 'devise/sessions#new'
@@ -7,7 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :capsules do
-    resources :confirmations, only: [:index]
     resources :details, only: [:index]
     resources :medias, only: [:create]
     resources :messages, only: [:new, :create, :edit, :update, :destroy]
