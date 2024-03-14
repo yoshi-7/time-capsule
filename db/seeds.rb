@@ -48,27 +48,31 @@ puts 'Seeding messages for demo capsule'
 Message.create!(title: 'New message to display in the show', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', capsule: third_capsule)
 Message.create!(title: 'Second message for the show', content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis', capsule: third_capsule)
 
+# Seed audios
+# third_capsule.audios.attach(io: file, filename: "audio-time-capsule.m4a", content_type: "audio/x-m4a")
+
+
 puts 'Seeding images for demo capsule'
 
-file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1709980326/img_4434_jv9fuq.jpg")
+file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1710276649/development/img_0756_qmjmii.jpg")
 third_capsule.photos.attach(io: file, filename:"batch-1371-cofee-break", content_type: "image/jpg")
 
-file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1709980324/img_0777_wvs3yh.jpg")
+file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1710276651/development/img_0757_bu9l6x.jpg")
 third_capsule.photos.attach(io: file, filename:"batch-1371-talk", content_type: "image/jpg")
 
-file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1709980323/img_4437_qvkgvj.jpg")
+file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1710276656/development/img_0777_dnhgrt.jpg")
 third_capsule.photos.attach(io: file, filename:"batch-1371-kebab", content_type: "image/jpg")
 
-file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1709980323/img_0756_bh1phf.jpg")
+file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1710276658/development/img_4434_ysldwg.jpg")
 third_capsule.photos.attach(io: file, filename:"batch-1371-talk-2", content_type: "image/jpg")
 
-file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1709980322/img_0757_m6wait.jpg")
+file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1710276670/development/img_4437_dgbjql.jpg")
 third_capsule.photos.attach(io: file, filename:"batch-1371-talk-2", content_type: "image/jpg")
 
 puts 'Seeding video for demo capsule'
 
-file = URI.open("https://res.cloudinary.com/dee3oejjj/video/upload/v1709981790/IMG_0776_sxjqyu.mp4")
-third_capsule.videos.attach(io: file, filename:"batch-1371", content_type: "video/mp4")
+file = URI.open("https://res.cloudinary.com/dee3oejjj/video/upload/v1710276548/development/IMG_0776_zszfge.mp4")
+third_capsule.videos.attach(io: file, filename:"batch-1371", content_type: "video/quicktime")
 
 # Seed user_capsule
 
