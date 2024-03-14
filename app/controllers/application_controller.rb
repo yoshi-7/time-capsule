@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper ActionView::Helpers
 
   def after_sign_in_path_for(resources)
-    root_path
+    home_path
   end
 
   def default_url_options

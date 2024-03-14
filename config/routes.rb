@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users 
-  
-  root to: "pages#home"
+
+  devise_for :users
+  get "/home", to: "pages#home", as: :home
+
+  devise_scope :user do
+    root to: 'devise/sessions#new'
+  end
 
   resources :capsules do
     resources :details, only: [:index]
