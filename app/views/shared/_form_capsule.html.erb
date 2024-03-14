@@ -5,7 +5,7 @@
     </div>
   <% end %>
   <%= simple_form_for @capsule, html: { multipart: true, data: { 'autosave-target': 'form' } } do |f| %>
-    <%= f.input :name, label: 'Capsule\'s name', input_html: { class: "capsule-name", placeholder: "My awesome memories", value: @capsule.name, data: { 'action': 'input->autosave#save' } }, label_html: { class: 'fw-bold fs-5' } %>
+    <%= f.input :name, label: 'Give a title to your capsule:', input_html: { class: "capsule-name", placeholder: "My awesome memories", value: @capsule.name, data: { 'action': 'input->autosave#save' } }, label_html: { class: 'fw-bold fs-5' } %>
   <% end %>
 
   <!-- Toggle message section -->
