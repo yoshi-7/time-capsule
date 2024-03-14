@@ -69,10 +69,10 @@ third_capsule.photos.attach(io: file, filename:"batch-1371-talk-2", content_type
 file = URI.open("https://res.cloudinary.com/dee3oejjj/image/upload/v1710276670/development/img_4437_dgbjql.jpg")
 third_capsule.photos.attach(io: file, filename:"batch-1371-talk-2", content_type: "image/jpg")
 
-puts 'Seeding video for demo capsule'
+# puts 'Seeding video for demo capsule'
 
-file = URI.open("https://res.cloudinary.com/dee3oejjj/video/upload/v1710276548/development/IMG_0776_zszfge.mp4")
-third_capsule.videos.attach(io: file, filename:"batch-1371", content_type: "video/quicktime")
+# file = URI.open("https://res.cloudinary.com/dee3oejjj/video/upload/v1710276548/development/IMG_0776_zszfge.mp4")
+# third_capsule.videos.attach(io: file, filename:"batch-1371", content_type: "video/quicktime")
 
 # Seed user_capsule
 
