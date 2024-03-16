@@ -34,13 +34,12 @@ jeremy.save
 
 puts 'Seeding demo capsule'
 
-team_capsule = Capsule.create(encapsulation_date: Date.new(1984, 8, 31), unlock_date: Date.new(2024, 3, 16), status: 'unlocked', name: 'Souvenirs vacances 1984', user: guillaume)
+team_capsule = Capsule.create(encapsulation_date: Date.new(1984, 8, 31), unlock_date: Date.new(2024, 3, 16), status: 'unlocked', name: '2015 memories', user: guillaume)
 # Capsule de fin de Batch >> Ajouter du contenu pour la dempo
 
 puts 'Seeding messages for demo capsule'
 
-Message.create!(title: 'DEAR WAGON WORLD', content: 'Dear Wagoners, it has been 6 months of coding, of doubting and of dreaming. Sometimes even making nightmares. I can still see overwhelming figures and pieces of codes in my mind but fuuuuck how good it was to spend these moments with all of you! Some of us will become developers and some of us will become front designers or just be more interested in coding. But we all be more than just student coders: we are Wagoners. So to all the Wagoners here in the room, congrats for all the sweat or the wold sweat we got in that cold room in Villa Gaudelet and well done for that long run hard work altogether and the sharing of informations. All of these memories were, are and will be scealed and engraved in that capsule to remind us all of that. We are all Time Capsules traveling through space & time together in a universe full of energy! harvest that energy and keep going further and further! To all my wagoners mates, PEACE!', capsule: team_capsule)
-Message.create!(title: 'How to thrive in a coding world', content: 'So, imagine this: six months, ten budding coders, and enough caffeine to keep a small country awake. Welcome to the rollercoaster ride that was our coding bootcamp! We were a motley crew of aspiring developers, armed with laptops and determination, ready to conquer the digital world one bug at a time. But amidst the chaos and coffee-induced jitters. Let me just say, Git never looked so adorable... But it was nott all code and caffeine. We bonded over late-night debugging sessions, shared triumphs, and epic fails. We became a family, united by our love for curly braces and semicolons... Just kidding. What will we do now of our Tuesday, Thursday & Saturday free times?!', capsule: team_capsule)
+Message.create!(title: 'Dear future self',content: 'This 2015 year was amazing to me! Looking back at these photos brings back floods of memories. Remember that spontaneous road trip we took with our friends? Driving through picturesque landscapes, singing along to our favorite tunes, and stopping at roadside diners for greasy burgers and milkshakes. Those were the days of carefree adventure and endless laughter. Looking back, I realize that 2015 wasn\'t just a year of unforgettable experiences; it was a year of growth, friendship, and discovering what truly brings joy to our lives. These photos capture just a glimpse of the magic that filled our days, and I\'m grateful for every single moment. Here\'s to cherishing the memories of 2015 and carrying their warmth with us into the future.', capsule: team_capsule)
 
 # Seed audios
 # third_capsule.audios.attach(io: file, filename: "audio-time-capsule.m4a", content_type: "audio/x-m4a")
@@ -48,18 +47,25 @@ Message.create!(title: 'How to thrive in a coding world', content: 'So, imagine 
 
 puts 'Seeding images for demo capsule'
 
-team_capsule.photos.attach(io: File.open('app/assets/images/public/img_0757.jpg'), filename:"batch-1371-cofee-break", content_type: "image/jpg")
+team_capsule.photos.attach(io: File.open('app/assets/images/public/020861-easy-rider.jpg'), filename:"batch-1371-cofee-break", content_type: "image/jpg")
 
-team_capsule.photos.attach(io: File.open('app/assets/images/public/img_0756.jpg'), filename:"batch-1371-talk", content_type: "image/jpg")
+team_capsule.photos.attach(io: File.open('app/assets/images/public/DSC00284.jpg'), filename:"batch-1371-talk", content_type: "image/jpg")
 
-team_capsule.photos.attach(io: File.open('app/assets/images/public/img_0777.jpg'), filename:"batch-1371-kebab", content_type: "image/jpg")
+team_capsule.photos.attach(io: File.open('app/assets/images/public/esb03_700.jpg'), filename:"batch-1371-kebab", content_type: "image/jpg")
 
-team_capsule.photos.attach(io: File.open('app/assets/images/public/img_4434.jpg'), filename:"batch-1371-talk-2", content_type: "image/jpg")
+team_capsule.photos.attach(io: File.open('app/assets/images/public/tumblr_l9xlrucuSR1qa4rak.gif'), filename:"batch-1371-talk-2", content_type: "image/jpg")
 
-team_capsule.photos.attach(io: File.open('app/assets/images/public/img_4437.jpg'), filename:"batch-1371-talk-2", content_type: "image/jpg")
+team_capsule.photos.attach(io: File.open('app/assets/images/public/tumblr_l1718h0fz01qz7dr7o1_500.jpg'), filename:"batch-1371-talk-2", content_type: "image/jpg")
 
-# puts 'Seeding video for demo capsule'
-# third_capsule.videos.attach(io: File.open('app/assets/images/public/IMG_0776.MOV'), filename:"batch-1371", content_type: "video/quicktime")
+team_capsule.photos.attach(io: File.open('app/assets/images/public/tumblr_lawwmzCgKn1qzyxjro1_400.jpg'), filename:"batch-1371-talk-2", content_type: "image/jpg")
+
+team_capsule.photos.attach(io: File.open('app/assets/images/public/tumblr_ldwgmyKpHy1qa4rak.jpg'), filename:"batch-1371-talk-2", content_type: "image/jpg")
+
+team_capsule.photos.attach(io: File.open('app/assets/images/public/tumblr_ldwor9Ua8o1qzc7p8o1_500.jpg'), filename:"batch-1371-talk-2", content_type: "image/jpg")
+
+team_capsule.photos.attach(io: File.open('app/assets/images/public/tumblr_lmcdu1X1vo1qzyxjr.jpg'), filename:"batch-1371-talk-2", content_type: "image/jpg")
+
+team_capsule.photos.attach(io: File.open('app/assets/images/public/tumblr_lqp5z0nuMj1qbqe22o1_500.jpg'), filename:"batch-1371-talk-2", content_type: "image/jpg")
 
 # Seed user_capsule
 
@@ -69,6 +75,7 @@ users = [aurel, guillaume, simon, jeremy]
 
 users.each do |user|
   UserCapsule.create(capsule: team_capsule, user: user)
+  Capsule.create(status: 'draft', user: user, name: 'For Lisa\'s birthday')
   Capsule.create(encapsulation_date: Date.new(2023, 8, 31), unlock_date: Date.new(2024, 6, 16), status: 'locked', name: 'Solotrip to the moon', user: user)
   UserCapsule.create(capsule: Capsule.create(encapsulation_date: Date.new(2020, 8, 31), unlock_date: Date.new(2025, 1, 1), status: 'locked', name: 'Holidays with friends', user: jeremy), user: user)
 end
