@@ -5,27 +5,32 @@
     </div>
   <% end %>
   <h1 class="text-black text-start fs-2">Are you ready?</h1>
-  <p class="text-secondary fs-6">Your about to send a capsule through time</p>
+  <p class="text-secondary fs-6">Your about to send your capsule through time!</p>
   <%= simple_form_for :user_capsule, url: capsule_user_capsules_path(@capsule), method: :post do |f| %>
     <div data-controller="recipients">
           <label for="email_field" class="fw-bold form-label mb-2">Recipients</label>
           <div class="d-flex w-100 gap-2 mb-4">
             <input type="email" data-recipients-target="input", placeholder="Type email", class="capsule-name w-100 me-4">
-            <button data-action="click->recipients#add", class="btn btn-secondary px-4 w-100">+ Add</button>
+            <button data-action="click->recipients#add", class="btn btn-secondary w-50 py-0">+ Add</button>
           </div>
-          <div class="d-flex flex-wrap gap-4 mb-4" data-recipients-target="list">
+          <div class="d-flex flex-wrap gap-2 mb-4" data-recipients-target="list">
           </div>
         <%= f.input :unlock_date,
                       as: :date,
+                      wrapper_html: { class: 'mb-4'},
                       required: true,
                       html5: true,
+                      label_html: { class: 'fw-bold mb-3' },
+                      label: 'Set an unlock date',
                       input_html: { data: { controller: "datepicker", 'action': "input->autosave#save"}, value: @capsule.unlock_date } %>
     </div>
-    <%= f.button :submit, class: 'btn btn-black rounded-pill py-4' do %>
-      <div class="d-flex gap-2">
-        <span class="material-symbols-outlined">rocket_launch</span>
-        Send capsule
-      </div>
+    <div class="d-flex w-100 justify-content-center pt-4">
+      <%= button_tag(type: 'submit', class: 'btn') do %>
+        <div class="btn btn-dark rounded-pill px-4 py-2 d-flex gap-2">
+          <span class="material-symbols-outlined send-icon">rocket_launch</span>
+          Seal & Send
+        </div>
     <% end %>
+    </div>
   <% end %>
 </div>

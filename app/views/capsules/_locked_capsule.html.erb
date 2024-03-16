@@ -19,7 +19,7 @@
       </div>
       <div class="d-flex w-100 justify-content-between align-items-end">
         <div>
-          <p class="small text-brand mb-0">Locked for <%= (capsule.unlock_date - Time.now.to_date).to_i %> days</p>
+          <p class="small text-brand mb-0">Can be opened in <%= (capsule.unlock_date - Time.now.to_date).to_i %> days</p>
         </div>
         <div class="d-flex flex-column progress-cotainer">
           <div style="margin-left: <%= Capsule.find(capsule.id).progression %>%" ><i class="fa-solid fa-rocket" style="color: rgb(167, 104, 186);"></i> </div>
