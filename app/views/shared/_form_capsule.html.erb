@@ -116,21 +116,6 @@
     <%= f.button :submit, class: "d-none" %>
   <% end %>
 
-  <!-- Videos upload -->
-
-  <%= simple_form_for @capsule, url: capsule_medias_path(@capsule), method: :post do |f| %>
-    <div class="dropzone" data-controller="dropzone">
-      <%= f.input :videos, as: :file, label: false, accept: 'video/*', input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
-      <div class="dropzone-msg dz-message needsclick text-gray-600">
-        <div class="d-flex gap-2 align-items-center">
-          <%= image_tag("myicons/record-icon.svg") %>
-          <p class="fs-6 fw-bold m-0 h-auto">New video<p>
-          </div>
-        </div>
-      </div>
-    <%= f.button :submit, class: "d-none" %>
-  <% end %>
-
   <!-- Audios upload -->
 
   <%= simple_form_for @capsule, url: capsule_medias_path(@capsule), method: :post do |f| %>
@@ -144,6 +129,21 @@
       </div>
     </div>
     <%= f.button :submit, class: "d-none"%>
+  <% end %>
+  
+  <!-- Videos upload -->
+
+  <%= simple_form_for @capsule, url: capsule_medias_path(@capsule), method: :post do |f| %>
+    <div class="dropzone" data-controller="dropzone">
+      <%= f.input :videos, as: :file, label: false, accept: 'video/*', input_html: { multiple: true, data: { dropzone_target: 'input', direct_upload_url: rails_direct_uploads_url } } %>
+      <div class="dropzone-msg dz-message needsclick text-gray-600">
+        <div class="d-flex gap-2 align-items-center">
+          <%= image_tag("myicons/record-icon.svg") %>
+          <p class="fs-6 fw-bold m-0 h-auto">New video<p>
+          </div>
+        </div>
+      </div>
+    <%= f.button :submit, class: "d-none" %>
   <% end %>
 
   <div class="d-flex justify-content-center w-100 my-4">
