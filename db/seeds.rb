@@ -34,12 +34,12 @@ jeremy.save
 
 puts 'Seeding demo capsule'
 
-team_capsule = Capsule.create(encapsulation_date: Date.new(1984, 8, 31), unlock_date: Date.new(2024, 3, 16), status: 'unlocked', name: '2015 memories', user: guillaume)
+team_capsule = Capsule.create(encapsulation_date: Date.new(2015, 12, 31), unlock_date: Date.new(2024, 3, 16), status: 'unlocked', name: '2015 memories', user: guillaume)
 # Capsule de fin de Batch >> Ajouter du contenu pour la dempo
 
 puts 'Seeding messages for demo capsule'
 
-Message.create!(title: 'Dear future self',content: 'This 2015 year was amazing to me! Looking back at these photos brings back floods of memories. Remember that spontaneous road trip we took with our friends? Driving through picturesque landscapes, singing along to our favorite tunes, and stopping at roadside diners for greasy burgers and milkshakes. Those were the days of carefree adventure and endless laughter. Looking back, I realize that 2015 wasn\'t just a year of unforgettable experiences; it was a year of growth, friendship, and discovering what truly brings joy to our lives. These photos capture just a glimpse of the magic that filled our days, and I\'m grateful for every single moment. Here\'s to cherishing the memories of 2015 and carrying their warmth with us into the future.', capsule: team_capsule)
+Message.create!(title: 'Dear friends',content: 'This 2015 year was amazing to us! Looking back at these photos brings back floods of memories. Remember that spontaneous road trip we took together? Driving through picturesque landscapes, singing along to our favorite tunes, and stopping at roadside diners for greasy burgers and milkshakes. Those were the days of carefree adventure and endless laughter. Looking back, I realize that 2015 wasn\'t just a year of unforgettable experiences; it was a year of growth, friendship, and discovering what truly brings joy to our lives. These photos capture just a glimpse of the magic that filled our days, and I\'m grateful for every single moment. Here\'s to cherishing the memories of 2015 and carrying their warmth with us into the future.', capsule: team_capsule)
 
 # Seed audios
 # third_capsule.audios.attach(io: file, filename: "audio-time-capsule.m4a", content_type: "audio/x-m4a")
