@@ -3,7 +3,7 @@
     <span class="material-symbols-outlined mb-4">keyboard_backspace</span>
   <% end %>
   <h1 class="text-black text-start fs-2"><%= @capsule.name %></h1>
-  <p class="text-secondary fs-6">Send by <%= @capsule.user.first_name %> on <%= @capsule.encapsulation_date.strftime("%d/%m/%Y") %></p>
+  <p class="text-secondary fs-6">Sent by <%= @capsule.user.first_name %> on <%= @capsule.encapsulation_date.strftime("%d/%m/%Y") %></p>
   <div class="d-flex mb-4 ps-1">
     <% @users.each do |user| %>
       <% if user.avatar.attached? %>
